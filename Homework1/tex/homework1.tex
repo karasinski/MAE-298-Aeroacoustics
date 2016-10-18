@@ -7,6 +7,8 @@
 \usepackage{pdfpages}
 \usepackage{algpseudocode}
 \usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{multicol}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
@@ -102,5 +104,80 @@
   \caption{The standard narrowband, 1/3 octave, and octave sound pressure levels with the reference pressure of 20 micro-Pascal. This recording has an overall sound pressure level of 119.74 dB.}%
   % \label{fig:fullfig}%
 \end{figure*}
+
+\clearpage
+\begin{multicols}{2}
+1/3 Octave Results\\
+
+\begin{tabular}{rr}
+\toprule
+   Frequency (Hz) &         SPL (dB) \\
+\midrule
+    1.55 &  107.79 \\
+    3.10 &  112.28 \\
+    4.92 &  113.83 \\
+    6.20 &  112.92 \\
+    7.81 &  110.56 \\
+    9.84 &  103.97 \\
+   12.40 &  103.86 \\
+   15.62 &  104.95 \\
+   19.68 &  102.79 \\
+   24.80 &  100.48 \\
+   31.25 &   98.47 \\
+   39.37 &  102.24 \\
+   49.60 &   97.26 \\
+   62.50 &   94.23 \\
+   78.74 &   93.97 \\
+   99.21 &   93.81 \\
+  125.00 &   96.48 \\
+  157.49 &   95.39 \\
+  198.42 &   93.97 \\
+  250.00 &   90.44 \\
+  314.98 &   88.02 \\
+  396.85 &   84.40 \\
+  500.00 &   85.15 \\
+  629.96 &   84.34 \\
+  793.70 &   76.32 \\
+ 1000.00 &   76.47 \\
+ 1259.92 &   76.88 \\
+ 1587.40 &   76.70 \\
+ 2000.00 &   70.88 \\
+ 2519.84 &   68.87 \\
+ 3174.80 &   62.93 \\
+ 4000.00 &   57.71 \\
+ 5039.68 &   55.22 \\
+ 6349.60 &   45.59 \\
+ 8000.00 &   37.86 \\
+10079.36 &   32.84 \\
+12699.20 &   31.75 \\
+16000.00 &   32.09 \\
+20158.73 &   32.95 \\
+\bottomrule
+\end{tabular}
+\\Octave Results\\
+
+\begin{tabular}{rr}
+\toprule
+Frequency (Hz) &         SPL (dB) \\
+\midrule
+   1.95 &  107.79 \\
+   3.90 &  116.13 \\
+   7.81 &  115.24 \\
+  15.62 &  108.73 \\
+  31.25 &  105.43 \\
+  62.50 &  100.20 \\
+ 125.00 &  100.13 \\
+ 250.00 &   96.27 \\
+ 500.00 &   89.42 \\
+1000.00 &   81.33 \\
+2000.00 &   78.25 \\
+4000.00 &   64.60 \\
+8000.00 &   46.46 \\
+\bottomrule
+\end{tabular}
+\end{multicols}
+
+\clearpage
+\lstinputlisting{../HW1.py}
 
 \end{document}

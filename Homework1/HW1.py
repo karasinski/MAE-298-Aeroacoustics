@@ -1,8 +1,8 @@
-import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import scipy.signal
+import seaborn as sns
 import soundfile as sf
 
 sns.reset_orig()
@@ -59,7 +59,7 @@ def plot1a():
     plt.tight_layout()
     plt.savefig('tex/figs/Pascals_vs_Time.pdf')
     plt.clf()
-plot1a()
+#plot1a()
 
 ################################################################################
 # Calculate the single sided power spectral density function
@@ -76,7 +76,7 @@ def plot1b():
     plt.tight_layout()
     plt.savefig('tex/figs/G_xx.pdf')
     plt.clf()
-plot1b()
+#plot1b()
 
 ###############################################################################
 # Calculate and plot standard narrowband sound pressure level
@@ -98,7 +98,7 @@ def plot1c():
     plt.tight_layout()
     plt.savefig('tex/figs/narrowband.pdf')
     plt.clf()
-plot1c()
+#plot1c()
 
 ###############################################################################
 # Problem 2
@@ -125,11 +125,13 @@ def sum_octaves(df, octave=1.):
     for i, band in octave.iterrows():
         b = df.query('@band.lower < Frequency < @band.upper')
         Lp = 10 * np.log10((10 ** (b.SPL / 10)).sum())
-        res.append([band.center, Lp])
+        if Lp > 0:
+            res.append([band.center, Lp])
 
     res = pd.DataFrame(res)
     res.columns = ['Frequency', 'SPL']
     return res
+
 
 third = sum_octaves(df, octave=1 / 3)
 full = sum_octaves(third, octave=1.)
@@ -153,4 +155,4 @@ def plot2():
     plt.tight_layout()
     plt.savefig('tex/figs/octaves.pdf')
     plt.clf()
-plot2()
+#plot2()
