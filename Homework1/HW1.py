@@ -119,11 +119,11 @@ def generate_octaves(octave=1., upper_frequency=10E3):
     return freqs.query('upper < @upper_frequency')
 
 
-def sum_octaves(df, octave=1.):
+def sum_octaves(octaves, octave=1.):
     octave = generate_octaves(octave, upper_frequency=df.Frequency.max())
     res = []
     for i, band in octave.iterrows():
-        b = df.query('@band.lower < Frequency < @band.upper')
+        b = octaves.query('@band.lower < Frequency < @band.upper')
         Lp = 10 * np.log10((10 ** (b.SPL / 10)).sum())
         if Lp > 0:
             res.append([band.center, Lp])
