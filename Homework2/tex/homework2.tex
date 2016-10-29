@@ -1,0 +1,77 @@
+\documentclass[onecolumn,10pt]{jhwhw}
+
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{multicol}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{caption}
+\usepackage{bm}
+\captionsetup[lstlisting]{font={small,tt}}
+
+\author{John Karasinski}
+\title{EAE 298 Aeroacoustics \\ Fall Quarter 2016 \\ Homework \#2}
+
+\begin{document}
+\maketitle
+
+% \problem{[50 pts]} The values in the wav file are in volts. B\&K measurement microphones invert the pressure – a negative voltage from the microphone corresponds to a positive pressure. When you apply the calibration constant, account for this sign reversal. For this problem, the pre-calculated constant calibration factor is – 116 pascals/volt. Convert the time series in voltage to pascals. (Assume that all of the power in the boom waveform is within the range of flat response of the microphone).
+
+% \part{[10 pts]} Plot the waveform in pascals as a function of time. What is the peak pressure in the time domain? Notice the shape of the first arrival – it has the classic “N” wave shape of a sonic boom. Notice the duration in time from the positive-pressure peak to the negative-pressure peak.
+% \solution
+
+
+\problem{Solution of Lilley's Equation and its Application to Jet Noise }
+An axisymmetric jet of radius $R_j$ has an exit mean velocity of $W_j$ and an exit mean density of $\overline{\rho_j}$. The ambient mean velocity is zero and the ambient mean density is $\overline{\rho_0}$.
+Lilley’s equation for a parallel axisymmetric flow can be written
+$$
+\left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^3 p^{\prime}
+- \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \left ( \overline{a^2} \nabla^2 p^{\prime} \right )
+- \dfrac{d \overline{a^2}}{dr} \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial p^{\prime}}{\partial r}
++ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial^2 p^{\prime}}{\partial z \partial r}
+= S(\vec{x}, t)
+$$
+
+where
+$$
+\nabla^2 \equiv \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) + \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} + \dfrac{\partial ^2}{\partial z^2}
+$$
+and $W(r)$ and $\overline{a^2}(r)$ are the radial distributions of the axial velocity and speed of sound squared.
+
+\part
+[25 points] Seek solutions of Lilley’s equation in the form
+
+$$
+p^{\prime} (r,\theta,z,t) \sim P(r)  \exp⁡[i(kz+n \theta- \omega t)]
+$$
+
+Show that Lilley’s equation reduces to
+$$
+\dfrac{d^2 P}{dr^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2k}{(\omega-kW)}  \dfrac{dW}{dr} \right \} \dfrac{dP}{dr} + \left \{ \dfrac{(\omega-kW)^2}{\overline{a^2}} -k^2-\dfrac{n^2}{r^2} \right \} P = RHS
+$$
+where $\overline{\rho}(r)$ is the radial distribution of the mean density. (Note: $\overline{a^2} = \gamma \overline{p}/\overline{\rho}$ and $\overline{p}$ is constant.)
+
+\part
+[25 points] Determine the general form of solution (solution of the homogeneous equation) for the pressure fluctuation outside the jet in the ambient medium where the sources vanish. Make sure the solution is chosen to ensure decaying solutions or outgoing waves.
+
+\part
+[25 points] Determine the general form of solution (solution of the homogeneous equation) in the potential core region where the mean velocity and density are constant and equal to the jet exit values.
+
+\part
+[25 points] Consider a case in which the real jet is replaced by a vortex sheet at $r=R_j$. If the solutions are to be matched at the vortex sheet, describe what matching conditions should be applied. Give both the physical description and the mathematical expressions.
+
+
+\end{document}
