@@ -55,7 +55,7 @@ and $W(r)$ and $\overline{a^2}(r)$ are the radial distributions of the axial vel
 [25 points] Seek solutions of Lilley’s equation in the form
 
 $$
-p^{\prime} (r,\theta,z,t) \sim P(r)  \exp⁡[i(kz+n \theta- \omega t)]
+p^{\prime} (r,\theta,z,t) \sim P(r) \exp[i(kz+n \theta - \omega t)]
 $$
 
 Show that Lilley’s equation reduces to
@@ -63,6 +63,69 @@ $$
 \dfrac{d^2 P}{dr^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2k}{(\omega-kW)}  \dfrac{dW}{dr} \right \} \dfrac{dP}{dr} + \left \{ \dfrac{(\omega-kW)^2}{\overline{a^2}} -k^2-\dfrac{n^2}{r^2} \right \} P = RHS
 $$
 where $\overline{\rho}(r)$ is the radial distribution of the mean density. (Note: $\overline{a^2} = \gamma \overline{p}/\overline{\rho}$ and $\overline{p}$ is constant.)
+
+\solution
+Taking the solution for $p^{\prime}$ as
+$$
+p^{\prime} (r,\theta,z,t) = P(r) \exp[i(kz+n \theta - \omega t)]
+$$
+we can solve for several terms.
+
+% \begin{align*}
+% \dfrac{\partial p^{\prime}}{\partial r} &= (-\omega) P(r) \exp[i(kz+n \theta - \omega t)] \\
+% &= -\omega p^{\prime}
+% \end{align*}
+
+\begin{align*}
+\nabla^2 p^{\prime} &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] p^{\prime}
++ \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] p^{\prime}
++ \left [ \dfrac{\partial ^2}{\partial z^2} \right ] p^{\prime} \\
+&= p^{\prime}_r + p^{\prime}_{\theta} + p^{\prime}_z
+\end{align*}
+
+\begin{align*}
+p^{\prime}_r  &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] p^{\prime} \\
+&= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \right ) \right ] \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)] \\
+&= \dfrac{1}{r} \dfrac{\partial}{\partial r} \left [ r \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)]  \right ] \\
+&= \dfrac{1}{r} \left [ \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)] + r \dfrac{d^2 P} {d r^2} \exp[i(kz+n \theta - \omega t)]  \right ] \\
+&= \dfrac{1}{r} \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)] + \dfrac{d^2 P} {d r^2} \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] \\
+\\
+p^{\prime}_{\theta} &= \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] p^{\prime} \\
+&= \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
+% &= \left [ \dfrac{1}{r^2} \dfrac{\partial }{\partial \theta} \right ] \dfrac{\partial}{\partial \theta} P(r) \exp[i(kz+n \theta - \omega t)] \\
+% &= \left [ \dfrac{1}{r^2} \dfrac{\partial }{\partial \theta} \right ] in P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ \dfrac{1}{r^2} \right ] i^2 n^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= - \dfrac{n^2}{r^2}  P(r) \exp[i(kz+n \theta - \omega t)] \\
+% &= - \dfrac{n^2}{r^2}  p^{\prime} \\
+\\
+p^{\prime}_z &= \left [ \dfrac{\partial ^2}{\partial z^2} \right ] p^{\prime} \\
+&= \left [ \dfrac{\partial ^2}{\partial z^2} \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= i^2k^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= -k^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
+\end{align*}
+
+% \begin{align*}
+% p^{\prime}_r  &= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] \\
+% \\
+% p^{\prime}_{\theta} &= - \dfrac{n^2}{r^2}  P(r) \exp[i(kz+n \theta - \omega t)] \\
+% \\
+% p^{\prime}_z &= -k^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
+% \end{align*}
+
+\begin{align*}
+% \nabla^2 p^{\prime} = \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] + \left ( -\dfrac{n^2}{r^2} -k^2 \right ) p^{\prime}
+\nabla^2 p^{\prime} &= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] + \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)]
+\end{align*}
+
+\begin{align*}
+\left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] \rho^{\prime} &= \left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
+% &= \left [ \dfrac{\partial}{\partial t} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] + \left [ W \dfrac{\partial}{\partial z} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
+&= \left \{ i \left ( W k - \omega \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)]
+\end{align*}
 
 \part
 [25 points] Determine the general form of solution (solution of the homogeneous equation) for the pressure fluctuation outside the jet in the ambient medium where the sources vanish. Make sure the solution is chosen to ensure decaying solutions or outgoing waves.
