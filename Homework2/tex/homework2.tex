@@ -28,13 +28,7 @@
 \begin{document}
 \maketitle
 
-% \problem{[50 pts]} The values in the wav file are in volts. B\&K measurement microphones invert the pressure – a negative voltage from the microphone corresponds to a positive pressure. When you apply the calibration constant, account for this sign reversal. For this problem, the pre-calculated constant calibration factor is – 116 pascals/volt. Convert the time series in voltage to pascals. (Assume that all of the power in the boom waveform is within the range of flat response of the microphone).
-
-% \part{[10 pts]} Plot the waveform in pascals as a function of time. What is the peak pressure in the time domain? Notice the shape of the first arrival – it has the classic “N” wave shape of a sonic boom. Notice the duration in time from the positive-pressure peak to the negative-pressure peak.
-% \solution
-
-
-\problem{Solution of Lilley's Equation and its Application to Jet Noise }
+\problem{Solution of Lilley's Equation and its Application}
 An axisymmetric jet of radius $R_j$ has an exit mean velocity of $W_j$ and an exit mean density of $\overline{\rho_j}$. The ambient mean velocity is zero and the ambient mean density is $\overline{\rho_0}$.
 Lilley’s equation for a parallel axisymmetric flow can be written
 $$
@@ -44,7 +38,6 @@ $$
 + 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial^2 p^{\prime}}{\partial z \partial r}
 = S(\vec{x}, t)
 $$
-
 where
 $$
 \nabla^2 \equiv \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) + \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} + \dfrac{\partial ^2}{\partial z^2}
@@ -53,9 +46,9 @@ and $W(r)$ and $\overline{a^2}(r)$ are the radial distributions of the axial vel
 
 \part
 [25 points] Seek solutions of Lilley’s equation in the form
-
+\newcommand\sol{P(r) \exp[i(kz+n \theta - \omega t)]}
 $$
-p^{\prime} (r,\theta,z,t) \sim P(r) \exp[i(kz+n \theta - \omega t)]
+p^{\prime} (r,\theta,z,t) \sim \sol
 $$
 
 Show that Lilley’s equation reduces to
@@ -63,29 +56,60 @@ $$
 \dfrac{d^2 P}{dr^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2k}{(\omega-kW)}  \dfrac{dW}{dr} \right \} \dfrac{dP}{dr} + \left \{ \dfrac{(\omega-kW)^2}{\overline{a^2}} -k^2-\dfrac{n^2}{r^2} \right \} P = RHS
 $$
 where $\overline{\rho}(r)$ is the radial distribution of the mean density. (Note: $\overline{a^2} = \gamma \overline{p}/\overline{\rho}$ and $\overline{p}$ is constant.)
-
 \solution
 Taking the solution for $p^{\prime}$ as
 $$
-p^{\prime} (r,\theta,z,t) = P(r) \exp[i(kz+n \theta - \omega t)]
+p^{\prime} (r,\theta,z,t) = \sol
 $$
-we can solve for several terms.
-
+we can solve for several terms. The first term is:
+% The first set of partial derivatives can be expanded as:
 % \begin{align*}
-% \dfrac{\partial p^{\prime}}{\partial r} &= (-\omega) P(r) \exp[i(kz+n \theta - \omega t)] \\
-% &= -\omega p^{\prime}
+% \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^3 &=
+% \left ( \dfrac{\partial^3}{\partial t^3}
+% +3 \dfrac{\partial^2}{\partial t^2} W \dfrac{\partial}{\partial z}
+% +3 \dfrac{\partial}{\partial t} W^2 \dfrac{\partial^2}{\partial z^2}
+% +W^3 \dfrac{\partial^3}{\partial z^3} \right )\\
 % \end{align*}
+% We then have
+% \begin{align*}
+% \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^3 p^{\prime} =&
+% \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) p^{\prime} \\
+% =& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \sol \\
+% =& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( -i \omega \sol + W ik \sol \right) \\
+% =& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) (- \omega^2 \sol + 2 W k \omega \sol \\
+%                                                                                 & + W^2 k^2 \sol ) \\
+% = &+ 2 i W^2 k^2 \omega   \sol
+%    +   i         \omega^3 \sol \\
+%   &+   i W^3 k^3          \sol
+%    - 2 i W   k   \omega^2 \sol \\
+%   &+   i W^2 k^2 \omega   \sol
+%    -   i W   k   \omega^2 \sol \\
+% = &+   i W^2 k^2 \omega   \sol
+%    +   i         \omega^3 \sol \\
+%   &+   i W^3 k^3          \sol
+%    - 3 i W   k   \omega^2 \sol \\
+% = & i \sol \left (\omega^3 + W^2 k^2 \omega - 3 W k \omega^2 + W^3 k^3 \right )
+% \end{align*}
+%
+\begin{align*}
+\left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^3 p^{\prime} =&
+\left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) p^{\prime} \\
+=& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \sol \\
+=& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( -i \omega + W ik \right) \sol \\
+=& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \left ( -i \omega + W ik \right)^2 \sol \\
+=& \left ( -i \omega + W ik \right)^3 \sol \\
+=& i \left ( - k^3 W^3 + 3 k^2 W^2 \omega -3 k W \omega^2 + \omega^3 \right ) \sol
+\end{align*}
 
+The second term is very lengthy. Starting with $\nabla^2 p^{\prime}$, we have:
 \begin{align*}
 \nabla^2 p^{\prime} &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] p^{\prime}
 + \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] p^{\prime}
 + \left [ \dfrac{\partial ^2}{\partial z^2} \right ] p^{\prime} \\
-&= p^{\prime}_r + p^{\prime}_{\theta} + p^{\prime}_z
-\end{align*}
-
-\begin{align*}
+&= p^{\prime}_r + p^{\prime}_{\theta} + p^{\prime}_z \\
+\\
 p^{\prime}_r  &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] p^{\prime} \\
-&= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] \sol \\
 &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \right ) \right ] \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)] \\
 &= \dfrac{1}{r} \dfrac{\partial}{\partial r} \left [ r \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)]  \right ] \\
 &= \dfrac{1}{r} \left [ \dfrac{d P} {d r} \exp[i(kz+n \theta - \omega t)] + r \dfrac{d^2 P} {d r^2} \exp[i(kz+n \theta - \omega t)]  \right ] \\
@@ -93,39 +117,44 @@ p^{\prime}_r  &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \df
 &= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] \\
 \\
 p^{\prime}_{\theta} &= \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] p^{\prime} \\
-&= \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
-% &= \left [ \dfrac{1}{r^2} \dfrac{\partial }{\partial \theta} \right ] \dfrac{\partial}{\partial \theta} P(r) \exp[i(kz+n \theta - \omega t)] \\
-% &= \left [ \dfrac{1}{r^2} \dfrac{\partial }{\partial \theta} \right ] in P(r) \exp[i(kz+n \theta - \omega t)] \\
-&= \left [ \dfrac{1}{r^2} \right ] i^2 n^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
-&= - \dfrac{n^2}{r^2}  P(r) \exp[i(kz+n \theta - \omega t)] \\
-% &= - \dfrac{n^2}{r^2}  p^{\prime} \\
+&= \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] \sol \\
+&= \left [ \dfrac{1}{r^2} \right ] i^2 n^2 \sol \\
+&= - \dfrac{n^2}{r^2}  \sol \\
 \\
 p^{\prime}_z &= \left [ \dfrac{\partial ^2}{\partial z^2} \right ] p^{\prime} \\
-&= \left [ \dfrac{\partial ^2}{\partial z^2} \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
-&= i^2k^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
-&= -k^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
-\end{align*}
-
-% \begin{align*}
-% p^{\prime}_r  &= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] \\
-% \\
-% p^{\prime}_{\theta} &= - \dfrac{n^2}{r^2}  P(r) \exp[i(kz+n \theta - \omega t)] \\
-% \\
-% p^{\prime}_z &= -k^2 P(r) \exp[i(kz+n \theta - \omega t)] \\
-% \end{align*}
-
-\begin{align*}
-% \nabla^2 p^{\prime} = \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] + \left ( -\dfrac{n^2}{r^2} -k^2 \right ) p^{\prime}
-\nabla^2 p^{\prime} &= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] + \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ \dfrac{\partial ^2}{\partial z^2} \right ] \sol \\
+&= i^2k^2 \sol \\
+&= -k^2 \sol \\
+\\
+\nabla^2 p^{\prime} &= \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \exp[i(kz+n \theta - \omega t)] + \left ( -\dfrac{n^2}{r^2} -k^2 \right ) \sol \\
 &= \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)]
 \end{align*}
 
+Pluggin in the solution for $\nabla^2 p^{\prime}$, we can further solve:
 \begin{align*}
-\left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] \rho^{\prime} &= \left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] P(r) \exp[i(kz+n \theta - \omega t)] \\
-&= \left [ \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
-% &= \left [ \dfrac{\partial}{\partial t} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] + \left [ W \dfrac{\partial}{\partial z} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
-&= \left \{ i \left ( W k - \omega \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)]
+- \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \left ( \overline{a^2} \nabla^2 p^{\prime} \right ) =& - \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \times \\
+& \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
+% =& -i W k \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
+% &+ i \omega \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
+=& -i \left( - \omega + W k \right) \times \\
+& \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
 \end{align*}
+
+Finally, the third and fourth terms on the LHS can be solved:
+\begin{align*}
+- \dfrac{d \overline{a^2}}{dr} \left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] \rho^{\prime} &= - \dfrac{d \overline{a^2}}{dr} \left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] \sol \\
+&= - \dfrac{d \overline{a^2}}{dr} \left [ \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right ] \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
+&= - \dfrac{d \overline{a^2}}{dr} \left \{ i \left ( W k - \omega \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
+&= - \dfrac{d \gamma \frac{\overline{p}}{\overline{\rho}}}{dr} \left \{ i \left ( W k - \omega \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
+&= \gamma \overline{p} \dfrac{d \frac{1}{\overline{\rho}}}{dr} \left \{ i \left ( \omega - W k \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
+\\
++\left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial^2 }{\partial z \partial r} \right ] p^{\prime} &= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial^2 }{\partial z \partial r} \right ] \sol \\
+&= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial }{\partial z} \right ] \dfrac{\partial}{\partial r} \sol \\
+&= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \right ] \dfrac{\partial}{\partial z} \dfrac{d P}{d r} \exp[i(kz+n \theta - \omega t)] \\
+&= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \right ] ik \dfrac{d P}{d r} \exp[i(kz+n \theta - \omega t)] \\
+&= \left \{ 2 ik \overline{a^2} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} \exp[i(kz+n \theta - \omega t)] \\
+\end{align*}
+
 
 \part
 [25 points] Determine the general form of solution (solution of the homogeneous equation) for the pressure fluctuation outside the jet in the ambient medium where the sources vanish. Make sure the solution is chosen to ensure decaying solutions or outgoing waves.
