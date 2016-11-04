@@ -115,6 +115,8 @@ Finally, the third and fourth terms on the LHS can be solved:
 &= - \dfrac{d \overline{a^2}}{dr} \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right ) \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
 &= - \dfrac{d \overline{a^2}}{dr} \left ( i \left ( k W - \omega \right ) \dfrac{d P}{dr} \right ) \exp[i(kz+n \theta - \omega t)] \\
 &= \dfrac{d \overline{a^2}}{dr} \left \{ i \left ( \omega - k W \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
+&= -\left(\dfrac{\gamma \overline{p}}{\overline{\rho}^2}\right) \frac{d \overline{\rho}}{dr} \left \{ i \left ( \omega - k W \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
+&= -\left(\dfrac{\overline{a^2}}{\overline{\rho}}\right) \frac{d \overline{\rho}}{dr} \left \{ i \left ( \omega - k W \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
 \\
 +\left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial^2 }{\partial z \partial r} \right ] p^{\prime} &= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial^2 }{\partial z \partial r} \right ] \sol \\
 &= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial }{\partial z} \right ] \dfrac{\partial}{\partial r} \sol \\
@@ -126,29 +128,21 @@ Summing all these terms, we have
 \begin{align*}
 i \left ( \omega-k W \right)^3 \sol \\
 + i \left( \omega - k W \right) \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
-+ \dfrac{d \overline{a^2}}{dr} \left \{ i \left ( \omega - k W \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
+- \left(\dfrac{\overline{a^2}}{\overline{\rho}}\right) \frac{d \overline{\rho}}{dr} \left \{ i \left ( \omega - k W \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
 + \left \{ 2 ik \overline{a^2} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} \exp[i(kz+n \theta - \omega t)] &= S(\vec{x}, t)
 \end{align*}
 We can divide by $i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]$ to find:
 \begin{align*}
 \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2} } P(r) + \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \\
-+ \dfrac{1}{\overline{a^2} } \dfrac{d \overline{a^2}}{dr} \left \{ \dfrac{d P}{dr} \right \} \left \{ \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} &= \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]}
+- \dfrac{1}{\overline{\rho}} \frac{d \overline{\rho}}{dr} \left \{ \dfrac{d P}{dr} \right \} \left \{ \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} &= \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]}
 \end{align*}
 Rearranging for similar powers of $P$, we have:
 \begin{align*}
 \dfrac{d^2 P} {d r^2}
-+ \left \{ \dfrac{1}{r} + \dfrac{1}{\overline{a^2} } \dfrac{d \overline{a^2}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} \\
++ \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \frac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} \\
 + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]}
 \end{align*}
-Finally rearranging one last term:
-\begin{align*}
-% \overline{a^2} &= \dfrac{\gamma \overline{p}}{\overline{\rho}} \\
-% \dfrac{1}{\overline{a^2} } \dfrac{d \overline{a^2}}{dr} & = \dfrac{\overline{\rho}}{\gamma \overline{p}} \dfrac{d }{dr} \dfrac{\gamma \overline{p}}{\overline{\rho}} \\
-\dfrac{1}{\overline{a^2} } \dfrac{d \overline{a^2}}{dr} = - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr}
-% & = \dfrac{1}{\overline{p}} \dfrac{d \overline{p}}{dr}
-% & = - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr}
-\end{align*}
-We find
+We find:
 \begin{align*}
 \dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= RHS
 \end{align*}
