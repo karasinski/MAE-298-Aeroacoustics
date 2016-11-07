@@ -61,7 +61,7 @@ Taking the solution for $p^{\prime}$ as
 $$
 p^{\prime} (r,\theta,z,t) = \sol
 $$
-we can solve for several terms. The first term is:
+we can solve for several terms. The first term is
 \begin{align*}
 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^3 p^{\prime} =&
 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) p^{\prime} \\
@@ -69,10 +69,10 @@ we can solve for several terms. The first term is:
 =& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right)^2 \left ( -i \omega + W ik \right) \sol \\
 =& \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \left ( -i \omega + W ik \right)^2 \sol \\
 =& \left ( -i \omega + W ik \right)^3 \sol \\
-=& i \left ( \omega-k W \right)^3 \sol \\
+=& i \left ( \omega-k W \right)^3 \sol
 \end{align*}
 
-The second term is very lengthy. Starting with $\nabla^2 p^{\prime}$, we have:
+The second term is very lengthy. Starting with $\nabla^2 p^{\prime}$, we have
 \begin{align*}
 \nabla^2 p^{\prime} &= \left [ \dfrac{1}{r} \dfrac{\partial}{\partial r} \left ( r \dfrac{\partial} {\partial r} \right ) \right ] p^{\prime}
 + \left [ \dfrac{1}{r^2} \dfrac{\partial ^2}{\partial \theta^2} \right ] p^{\prime}
@@ -101,15 +101,15 @@ p^{\prime}_z &= \left [ \dfrac{\partial ^2}{\partial z^2} \right ] p^{\prime} \\
 &= \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)]
 \end{align*}
 
-Pluggin in the solution for $\nabla^2 p^{\prime}$, we can further solve:
+Pluggin in the solution for $\nabla^2 p^{\prime}$, we can further solve
 \begin{align*}
 - \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \left ( \overline{a^2} \nabla^2 p^{\prime} \right ) =& - \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \times \\
 & \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
 =& i \left( \omega - k W \right) \times \\
-& \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)] \\
+& \overline{a^2} \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \exp[i(kz+n \theta - \omega t)]
 \end{align*}
 
-Finally, the third and fourth terms on the LHS can be solved:
+Finally, the third and fourth terms on the LHS can be solved
 \begin{align*}
 - \dfrac{d \overline{a^2}}{dr} \left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] \rho^{\prime} &= - \dfrac{d \overline{a^2}}{dr} \left [ \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \dfrac{\partial}{\partial r} \right ] \sol \\
 &= - \dfrac{d \overline{a^2}}{dr} \left ( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right ) \dfrac{d P}{dr} \exp[i(kz+n \theta - \omega t)] \\
@@ -122,7 +122,7 @@ Finally, the third and fourth terms on the LHS can be solved:
 &= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \dfrac{\partial }{\partial z} \right ] \dfrac{\partial}{\partial r} \sol \\
 &= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \right ] \dfrac{\partial}{\partial z} \dfrac{d P}{d r} \exp[i(kz+n \theta - \omega t)] \\
 &= \left [ 2 \overline{a^2} \dfrac{dW}{dr} \right ] ik \dfrac{d P}{d r} \exp[i(kz+n \theta - \omega t)] \\
-&= \left \{ 2 ik \overline{a^2} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} \exp[i(kz+n \theta - \omega t)] \\
+&= \left \{ 2 ik \overline{a^2} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} \exp[i(kz+n \theta - \omega t)]
 \end{align*}
 Summing all these terms, we have
 \begin{align*}
@@ -131,18 +131,18 @@ i \left ( \omega-k W \right)^3 \sol \\
 - \left(\dfrac{\overline{a^2}}{\overline{\rho}}\right) \frac{d \overline{\rho}}{dr} \left \{ i \left ( \omega - k W \right ) \dfrac{d P}{dr} \right \} \exp[i(kz+n \theta - \omega t)] \\
 + \left \{ 2 ik \overline{a^2} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} \exp[i(kz+n \theta - \omega t)] &= S(\vec{x}, t)
 \end{align*}
-We can divide by $i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]$ to find:
+We can divide by $i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]$ to find
 \begin{align*}
 \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2} } P(r) + \left \{ \left ( -\dfrac{n^2}{r^2} -k^2 \right ) P(r) + \left [ \dfrac{1}{r} \dfrac{d P} {d r} + \dfrac{d^2 P} {d r^2} \right ] \right \} \\
 - \dfrac{1}{\overline{\rho}} \frac{d \overline{\rho}}{dr} \left \{ \dfrac{d P}{dr} \right \} \left \{ \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \dfrac{d P}{d r} \right \} &= \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]}
 \end{align*}
-Rearranging for similar powers of $P$, we have:
+Rearranging for similar powers of $P$, we have
 \begin{align*}
 \dfrac{d^2 P} {d r^2}
 + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \frac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} \\
 + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(kz+n \theta - \omega t)]}
 \end{align*}
-We find:
+We find
 \begin{align*}
 \dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= RHS
 \end{align*}
@@ -152,10 +152,63 @@ RHS = \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(
 \end{align*}
 
 \part
-[25 points] Determine the general form of solution (solution of the homogeneous equation) for the pressure fluctuation outside the jet in the ambient medium where the sources vanish. Make sure the solution is chosen to ensure decaying solutions or outgoing waves.
+[25 points] Determine the general form of solution (solution of the homogeneous equation) for the pressure fluctuation outside the jet in the ambient medium where the sources vanish. Make sure the solution is chosen to ensure decaying solutions or outgoing waves. \\
+\\
+For the region outside the jet, we have
+\begin{align*}
+W(r) &= 0 \\
+\overline{\rho} &= \overline{\rho_0} = constant \\
+\end{align*}
+To solve a homogenous second order linear ordininary differential equation we find the characteristic polynomial. Plugging in the boundary conditions,
+\begin{align*}
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{ \omega^2 }{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
+A \dfrac{d^2 P} {d r^2} + B \dfrac{d P} {d r} + C P &= 0
+\end{align*}
+For $A$, $B$, and $C$ we have
+\begin{align*}
+A &= 1 \\
+B &= \dfrac{1}{r} \\
+% C &= \dfrac{\omega^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \\
+C &= -\dfrac{n^2}{r^2}
+\end{align*}
+Solving the characteristic equation
+\begin{align*}
+A \lambda ^2 + B \lambda + C = 0 \\
+\lambda = \dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A} \\
+% \lambda = \dfrac{-\dfrac{1}{r} \pm \sqrt{\dfrac{1}{r^2} - 4 \left (\dfrac{\omega^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2}  \right )} }{2} \\
+\lambda = \dfrac{-\dfrac{1}{r} \pm \sqrt{\dfrac{1}{r^2} - 4 \left (-\dfrac{n^2}{r^2}  \right )} }{2} \\
+\lambda = \dfrac{-\dfrac{1}{r} \pm \sqrt{\dfrac{1 + 4n^2}{r^2}} }{2} \\
+\lambda = \dfrac{-1 \pm \sqrt{1 + 4n^2 }}{2r} \\
+\end{align*}
+The solution to this equation takes the form
+\begin{align*}
+P(r) &= e^{\lambda r}
+\end{align*}
+As we are interested in the decaying case, we take the answer as
 
 \part
-[25 points] Determine the general form of solution (solution of the homogeneous equation) in the potential core region where the mean velocity and density are constant and equal to the jet exit values.
+[25 points] Determine the general form of solution (solution of the homogeneous equation) in the potential core region where the mean velocity and density are constant and equal to the jet exit values. \\
+\\
+For the region inside the jet, we have
+\begin{align*}
+W(r) &= W_j = constant \\
+\overline{\rho} &= \overline{\rho_j} = constant \\
+0 &< r < R_j
+\end{align*}
+For a homogenous second order linear ordininary differential equation we find the characteristic polynomial,
+\begin{align*}
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W_j \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
+A \dfrac{d^2 P} {d r^2} + B \dfrac{d P} {d r} + C P &= 0
+\end{align*}
+For $A$, $B$, and $C$ we have
+\begin{align*}
+A &= 1 \\
+B &= \dfrac{1}{r} \\
+C &= \left \{ \dfrac{\left ( \omega-k W_j \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \}
+\end{align*}
 
 \part
 [25 points] Consider a case in which the real jet is replaced by a vortex sheet at $r=R_j$. If the solutions are to be matched at the vortex sheet, describe what matching conditions should be applied. Give both the physical description and the mathematical expressions.
