@@ -167,7 +167,6 @@ To solve a homogenous second order linear ordininary differential equation we fi
 \end{align*}
 where
 \begin{align*}
-% \lambda_{\infty}^2 &= \dfrac{\left ( \omega-k W_{\infty} \right)^2}{\overline{a^2}} -k^2 \\
 \lambda_{\infty} &= \sqrt{\dfrac{\left ( \omega-k W_{\infty} \right)^2}{\overline{a^2}} -k^2} \\
 &= \sqrt{\dfrac{\left ( \omega- \dfrac{w}{\overline{a}} W_{\infty} \right)^2}{\overline{a^2}} -\dfrac{w^2}{\overline{a^2}}} \\
 &= \sqrt{\dfrac{\omega^2 \left(1 -\dfrac{W_{\infty}}{\overline{a}} \right)^2}{\overline{a^2}}- \dfrac{\omega^2}{\overline{a^2}}} \\
@@ -233,7 +232,51 @@ A H_n^{(1)} (\lambda_{\infty} R_j) = C J_m (\lambda_j R_j)
 Similarly, the velocity normal to the vortex sheet must be equivalent on both sides of the sheet (i.e., $v_r^+ = v_r^-$). Considering the momentum equation in the normal direction
 \begin{align*}
 \rho_0 \dfrac{D \vec{v}}{D t} &= - \nabla P \\
-\rho_0 \dfrac{D \vec{v_r}}{D t} &= - \nabla P \cdot \hat{n} = -\dfrac{\partial P}{\partial r} \\
+\rho_0 \dfrac{D \vec{v_r}}{D t} &= - \nabla P \cdot \hat{n} = -\dfrac{\partial P}{\partial r}
 \end{align*}
+and
+\begin{align*}
+\vec{v} \cdot \hat{n} = \vec{v_r} = \hat{v_r} e^{-i w t + k z}
+\end{align*}
+Expanding the total derivative
+\begin{align*}
+\rho_0 \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \vec{v_r} &= -\dfrac{\partial P}{\partial r}
+\end{align*}
+We can define the position of the vortex sheet, $\zeta(z, t)$, as
+\begin{align*}
+\zeta(z, t) &= a e^{-i w t + k z} \\
+\hat{v_r} &= \dfrac{d \zeta}{d t}
+\end{align*}
+We can find the normal velocity on the outside ($\hat{v_r}^+$) and inside ($\hat{v_r}^-$) the jet
+\begin{align*}
+\hat{v_r}^+ &= \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \zeta_{\infty} \\
+&= -i a \left( w - W_{\infty} k \right) \zeta \\
+\hat{v_r}^- &= \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \zeta_{j} \\
+&= -i a \left( w - W_{j} k \right) \zeta
+\end{align*}
+Setting both of these equations equal to the constant $a$
+\begin{align}
+\dfrac{\hat{v_r}^+}{-i \left( w - W_{\infty} k \right) \zeta} &= \dfrac{\hat{v_r}^-}{-i \left( w - W_{j} k \right) \zeta} \nonumber \\
+\dfrac{\hat{v_r}^+}{\left( w - W_{\infty} k \right)} &= \dfrac{\hat{v_r}^-}{\left( w - W_{j} k \right)}
+\end{align}
+Putting these solutions into the momentum equation yields
+\begin{align*}
+\rho_0 \dfrac{D \vec{v_r}}{D t} &= -\dfrac{\partial P}{\partial r} \\
+\rho_0 \left( -i a \left( w - W_{\infty} k \right) \zeta \right) \vec{v_r}^+ &= - \dfrac{\partial P}{\partial r} \\
+\rho_0 i a \left( w - W_{\infty} k \right) \zeta \vec{v_r}^+ &= \dfrac{\partial P}{\partial r}
+\end{align*}
+Rearranging
+\begin{align*}
+\vec{v_r}^+ &= \dfrac{1}{\rho_0 i a \left( w - W_{\infty} k \right) \zeta } \dfrac{\partial P}{\partial r}^+
+\end{align*}
+We can similarly find
+\begin{align*}
+\vec{v_r}^- &= \dfrac{1}{\rho_0 i a \left( w - W_{j} k \right) \zeta } \dfrac{\partial P}{\partial r}^-
+\end{align*}
+Plugging these into Equation~1 results in
+\begin{align*}
+\dfrac{\frac{dP}{dr}^+}{\left( w - W_{\infty} k \right)^2} &= \dfrac{\frac{dP}{dr}^-}{\left( w - W_{j} k \right)^2}
+\end{align*}
+This gives us two equations (one from matching the pressure distributions, and one from matching the normal velocity equations) and two unknowns $A$ and $C$. The general solutions found in parts (b) and (c) can be uniquely solved by setting these two equations equal to each other.
 
 \end{document}
