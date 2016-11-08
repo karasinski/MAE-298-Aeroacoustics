@@ -156,37 +156,44 @@ RHS = \dfrac{S(\vec{x}, t)}{i \overline{a^2} \left( \omega - k W \right) \exp[i(
 \\
 For the region outside the jet, we have
 \begin{align*}
-W(r) &= 0 \\
+W(r) &= W_{\infty} = constant \\
 \overline{\rho} &= \overline{\rho_0} = constant \\
 \end{align*}
 To solve a homogenous second order linear ordininary differential equation we find the characteristic polynomial. Plugging in the boundary conditions,
 \begin{align*}
 \dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
-\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{ \omega^2 }{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
-\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
-A \dfrac{d^2 P} {d r^2} + B \dfrac{d P} {d r} + C P &= 0
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W_{\infty} \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \lambda_{\infty}^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0
 \end{align*}
-For $A$, $B$, and $C$ we have
+where
 \begin{align*}
-A &= 1 \\
-B &= \dfrac{1}{r} \\
-% C &= \dfrac{\omega^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \\
-C &= -\dfrac{n^2}{r^2}
+% \lambda_{\infty}^2 &= \dfrac{\left ( \omega-k W_{\infty} \right)^2}{\overline{a^2}} -k^2 \\
+\lambda_{\infty} &= \sqrt{\dfrac{\left ( \omega-k W_{\infty} \right)^2}{\overline{a^2}} -k^2} \\
+&= \sqrt{\dfrac{\left ( \omega- \dfrac{w}{\overline{a}} W_{\infty} \right)^2}{\overline{a^2}} -\dfrac{w^2}{\overline{a^2}}} \\
+&= \sqrt{\dfrac{\omega^2 \left(1 -\dfrac{W_{\infty}}{\overline{a}} \right)^2}{\overline{a^2}}- \dfrac{\omega^2}{\overline{a^2}}} \\
+&= \sqrt{\dfrac{\omega^2}{\overline{a^2}}\left[ \left(1 -M_{\infty} \right)^2 - 1  \right]} \\
+&= \sqrt{\dfrac{\omega^2}{\overline{a^2}}\left( 1 -2M_{\infty} + M_{\infty}^2 - 1  \right) } \\
+&= \sqrt{\dfrac{\omega^2}{\overline{a^2}}\left( M_{\infty}^2 -2M_{\infty} \right) } \\
+&= \sqrt{\dfrac{\omega^2}{\overline{a^2}} M_{\infty}( M_{\infty} - 2 ) } \\
 \end{align*}
-Solving the characteristic equation
+is imaginary as the freestream velocity should be well below Mach 2. This ODE can be solved by the following equation
 \begin{align*}
-A \lambda ^2 + B \lambda + C = 0 \\
-\lambda = \dfrac{-B \pm \sqrt{B^2 - 4AC}}{2A} \\
-% \lambda = \dfrac{-\dfrac{1}{r} \pm \sqrt{\dfrac{1}{r^2} - 4 \left (\dfrac{\omega^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2}  \right )} }{2} \\
-\lambda = \dfrac{-\dfrac{1}{r} \pm \sqrt{\dfrac{1}{r^2} - 4 \left (-\dfrac{n^2}{r^2}  \right )} }{2} \\
-\lambda = \dfrac{-\dfrac{1}{r} \pm \sqrt{\dfrac{1 + 4n^2}{r^2}} }{2} \\
-\lambda = \dfrac{-1 \pm \sqrt{1 + 4n^2 }}{2r} \\
+P = A H_n^{(1)} (\lambda_{\infty} r) + B H_n^{(2)} (\lambda_{\infty} r)
 \end{align*}
-The solution to this equation takes the form
+where $H_n^{(1)}$ and $H_n^{(2)}$ are the Hankel functions of the first and second kind, respectively, and A and B are unknown constants. The Hankel functions can be expressed as Bessel functions as
 \begin{align*}
-P(r) &= e^{\lambda r}
+H_m^{(1)}(x) &= J_m(x) + i Y_m(x) \\
+H_m^{(2)}(x) &= J_m(x) - i Y_m(x)
 \end{align*}
-As we are interested in the decaying case, we take the answer as
+Taking the limit, $\lim_{x\to\infty}$ for both equations
+\begin{align*}
+\lim_{x\to\infty} H_m^{(1)}(x) &= (-i)^{m+1} \dfrac{e^{ix}}{x} \\
+\lim_{x\to\infty} H_m^{(2)}(x) &= (i)^{m+1} \dfrac{e^{-ix}}{x}
+\end{align*}
+The input to the Hankel function $\lambda_{\infty} r$ is imaginary, causing $H_m^{(2)}\to\infty$ as $r\to\infty$, so $B$ must be zero. The general form of the solution is therefore
+\begin{align*}
+P = A H_n^{(1)} (\lambda_{\infty} r)
+\end{align*}
 
 \part
 [25 points] Determine the general form of solution (solution of the homogeneous equation) in the potential core region where the mean velocity and density are constant and equal to the jet exit values. \\
@@ -197,21 +204,36 @@ W(r) &= W_j = constant \\
 \overline{\rho} &= \overline{\rho_j} = constant \\
 0 &< r < R_j
 \end{align*}
-For a homogenous second order linear ordininary differential equation we find the characteristic polynomial,
+Plugging these in, we have
 \begin{align*}
 \dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} - \dfrac{1}{\overline{\rho}} \dfrac{d \overline{\rho}}{dr} + \dfrac{2 k}{\left ( \omega-k W \right)} \dfrac{dW}{dr} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
 \dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \dfrac{\left ( \omega-k W_j \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0 \\
-A \dfrac{d^2 P} {d r^2} + B \dfrac{d P} {d r} + C P &= 0
+\dfrac{d^2 P} {d r^2} + \left \{ \dfrac{1}{r} \right \} \dfrac{d P} {d r} + \left \{ \lambda_j^2 -\dfrac{n^2}{r^2} \right \} P(r) &= 0
 \end{align*}
-For $A$, $B$, and $C$ we have
+This ODE can be solved by the following equation
 \begin{align*}
-A &= 1 \\
-B &= \dfrac{1}{r} \\
-C &= \left \{ \dfrac{\left ( \omega-k W_j \right)^2}{\overline{a^2}} -k^2 -\dfrac{n^2}{r^2} \right \}
+P = C J_m (\lambda_j r) + D Y_m (\lambda_j r)
+\end{align*}
+where $J_m$ and $Y_m$ are the Bessel functions of the first and second kind, respectively, and C and D are unknown constants. The limit
+\begin{align*}
+\lim_{x\to0} Y_m \to \infty
+\end{align*}
+however, and so $D=0$ and the general form for the solution is
+\begin{align*}
+P = C J_m (\lambda_j r)
 \end{align*}
 
 \part
-[25 points] Consider a case in which the real jet is replaced by a vortex sheet at $r=R_j$. If the solutions are to be matched at the vortex sheet, describe what matching conditions should be applied. Give both the physical description and the mathematical expressions.
-
+[25 points] Consider a case in which the real jet is replaced by a vortex sheet at $r=R_j$. If the solutions are to be matched at the vortex sheet, describe what matching conditions should be applied. Give both the physical description and the mathematical expressions.\\
+\\
+The pressure on the vortex sheet must be equivalent from both the inside and outside of the jet (i.e., $P^+ = P^-$). Setting the solutions from part (b) and (c) equal to each other at $r=R_j$ gives
+\begin{align*}
+A H_n^{(1)} (\lambda_{\infty} R_j) = C J_m (\lambda_j R_j)
+\end{align*}
+Similarly, the velocity normal to the vortex sheet must be equivalent on both sides of the sheet (i.e., $v_r^+ = v_r^-$). Considering the momentum equation in the normal direction
+\begin{align*}
+\rho_0 \dfrac{D \vec{v}}{D t} &= - \nabla P \\
+\rho_0 \dfrac{D \vec{v_r}}{D t} &= - \nabla P \cdot \hat{n} = -\dfrac{\partial P}{\partial r} \\
+\end{align*}
 
 \end{document}
