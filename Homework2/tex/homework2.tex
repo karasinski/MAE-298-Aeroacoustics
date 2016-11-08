@@ -229,54 +229,73 @@ The pressure on the vortex sheet must be equivalent from both the inside and out
 \begin{align*}
 A H_n^{(1)} (\lambda_{\infty} R_j) = C J_m (\lambda_j R_j)
 \end{align*}
-Similarly, the velocity normal to the vortex sheet must be equivalent on both sides of the sheet (i.e., $v_r^+ = v_r^-$). Considering the momentum equation in the normal direction
+Similarly, the velocity normal to the vortex sheet must be equivalent on both sides of the sheet (i.e., $v_r^+ = v_r^-$). Considering the momentum equation
 \begin{align*}
-\rho_0 \dfrac{D \vec{v}}{D t} &= - \nabla P \\
-\rho_0 \dfrac{D \vec{v_r}}{D t} &= - \nabla P \cdot \hat{n} = -\dfrac{\partial P}{\partial r}
+\overline{\rho_0} \dfrac{D \vec{v}}{D t} &= - \nabla P
 \end{align*}
-and
+We define $\vec{v_r} = v e^{-i (w t + k z)}$, where $v$ is an arbitrary constant, and dot both sides normal to the radial direction
 \begin{align*}
-\vec{v} \cdot \hat{n} = \vec{v_r} = \hat{v_r} e^{-i w t + k z}
+\overline{\rho_0} \dfrac{D}{D t} \left ( \vec{v} \cdot \hat{r} \right ) &= - \nabla P \cdot \hat{r} \\
+\overline{\rho_0} \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \vec{v_r} &= -\dfrac{d P}{d r} \\
+\overline{\rho_0} \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) v e^{-i (w t + k z)} &= -\dfrac{d P}{d r} \\
+-i \overline{\rho_0} \left(w - Wk \right) v e^{-i (w t + k z)} &= -\dfrac{d P}{d r} \\
+i \overline{\rho_0} \left(w - Wk \right) \vec{v_r} &= \dfrac{d P}{d r}
 \end{align*}
-Expanding the total derivative
+Rearranging, and solving for both inside the jet and outside in the freestream, we find
+\begin{align}
+\vec{v_r}^+ &= \dfrac{\frac{d P}{d r}^+} {i \overline{\rho_0} \left(w - W_{\infty}k \right) } \\
+\vec{v_r}^- &= \dfrac{\frac{d P}{d r}^-}{i \overline{\rho_0} \left(w - W_{j}k \right) }
+\end{align}
+We can define the position of the vortex sheet, $\zeta = \zeta^+ = \zeta^- = \zeta(z, t) = a e^{-i (w t + k z)}$, and
 \begin{align*}
-\rho_0 \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \vec{v_r} &= -\dfrac{\partial P}{\partial r}
-\end{align*}
-We can define the position of the vortex sheet, $\zeta(z, t)$, as
-\begin{align*}
-\zeta(z, t) &= a e^{-i w t + k z} \\
-\hat{v_r} &= \dfrac{d \zeta}{d t}
+\hat{v_r} &= \dfrac{D }{D t} \zeta(z, t) \\
+&= \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) a e^{-i (w t + k z)} \\
+&= -i \left( w - W k \right) a e^{-i (w t + k z)} \\
+&= -i \left( w - W k \right) \zeta
 \end{align*}
 We can find the normal velocity on the outside ($\hat{v_r}^+$) and inside ($\hat{v_r}^-$) the jet
-\begin{align*}
-\hat{v_r}^+ &= \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \zeta_{\infty} \\
-&= -i a \left( w - W_{\infty} k \right) \zeta \\
-\hat{v_r}^- &= \left( \dfrac{\partial}{\partial t} + W \dfrac{\partial}{\partial z} \right) \zeta_{j} \\
-&= -i a \left( w - W_{j} k \right) \zeta
-\end{align*}
-Setting both of these equations equal to the constant $a$
 \begin{align}
-\dfrac{\hat{v_r}^+}{-i \left( w - W_{\infty} k \right) \zeta} &= \dfrac{\hat{v_r}^-}{-i \left( w - W_{j} k \right) \zeta} \nonumber \\
-\dfrac{\hat{v_r}^+}{\left( w - W_{\infty} k \right)} &= \dfrac{\hat{v_r}^-}{\left( w - W_{j} k \right)}
+\hat{v_r}^+ &= -i \left( w - W_{\infty} k \right) \zeta \\
+\hat{v_r}^- &= -i \left( w - W_{j} k \right) \zeta
 \end{align}
-Putting these solutions into the momentum equation yields
+% Dividing equation (1) by equation (2) yields
+% \begin{align}
+% \dfrac{\hat{v_r}^+}{\left( w - W_{\infty} k \right)} &= \dfrac{\hat{v_r}^-}{\left( w - W_{j} k \right)}
+% \end{align}
+% Putting (1) into the momentum equation yields
+% \begin{align*}
+% \overline{\rho_0} \dfrac{D \vec{v_r}}{D t} &= -\dfrac{\partial P}{\partial r} \\
+% \overline{\rho_0} \left( -i a \left( w - W_{\infty} k \right) \zeta \right) \vec{v_r}^+ &= - \dfrac{\partial P}{\partial r} \\
+% \overline{\rho_0} i a \left( w - W_{\infty} k \right) \zeta \vec{v_r}^+ &= \dfrac{\partial P}{\partial r}
+% \end{align*}
+% Rearranging
+% \begin{align*}
+% \vec{v_r}^+ &= \dfrac{1}{\overline{\rho_0} i a \left( w - W_{\infty} k \right) \zeta } \dfrac{\partial P}{\partial r}^+
+% \end{align*}
+% We can similarly find
+% \begin{align*}
+% \vec{v_r}^- &= \dfrac{1}{\overline{\rho_0} i a \left( w - W_{j} k \right) \zeta } \dfrac{\partial P}{\partial r}^-
+% \end{align*}
+% Plugging these into Equation~1 results in
+% \begin{align*}
+% \dfrac{\frac{dP}{dr}^+}{\left( w - W_{\infty} k \right)^2} &= \dfrac{\frac{dP}{dr}^-}{\left( w - W_{j} k \right)^2}
+% \end{align*}
+Setting Equation 1 equal to Equation 3 yields
 \begin{align*}
-\rho_0 \dfrac{D \vec{v_r}}{D t} &= -\dfrac{\partial P}{\partial r} \\
-\rho_0 \left( -i a \left( w - W_{\infty} k \right) \zeta \right) \vec{v_r}^+ &= - \dfrac{\partial P}{\partial r} \\
-\rho_0 i a \left( w - W_{\infty} k \right) \zeta \vec{v_r}^+ &= \dfrac{\partial P}{\partial r}
+\vec{v_r}^+ &= \dfrac{\frac{d P}{d r}^+} {i \overline{\rho_0} \left(w - W_{\infty}k \right) } = -i \left( w - W_{\infty} k \right) \zeta
 \end{align*}
-Rearranging
-\begin{align*}
-\vec{v_r}^+ &= \dfrac{1}{\rho_0 i a \left( w - W_{\infty} k \right) \zeta } \dfrac{\partial P}{\partial r}^+
-\end{align*}
-We can similarly find
-\begin{align*}
-\vec{v_r}^- &= \dfrac{1}{\rho_0 i a \left( w - W_{j} k \right) \zeta } \dfrac{\partial P}{\partial r}^-
-\end{align*}
-Plugging these into Equation~1 results in
-\begin{align*}
-\dfrac{\frac{dP}{dr}^+}{\left( w - W_{\infty} k \right)^2} &= \dfrac{\frac{dP}{dr}^-}{\left( w - W_{j} k \right)^2}
-\end{align*}
+Rearranging to solve for $\zeta$
+\begin{align}
+\zeta = \dfrac{\frac{d P}{d r}^+} {\overline{\rho_0} \left(w - W_{\infty}k \right)^2 }
+\end{align}
+Setting Equation 2 equal to 4 similarly yields
+\begin{align}
+\zeta = \dfrac{\frac{d P}{d r}^-} {\overline{\rho_0} \left(w - W_{j}k \right)^2 }
+\end{align}
+Setting Equation 5 equal to Equation 6 yields the final result of
+\begin{align}
+\dfrac{\frac{d P}{d r}^+} {\left(w - W_{\infty}k \right)^2 } = \dfrac{\frac{d P}{d r}^-} {\left(w - W_{j}k \right)^2 }
+\end{align}
 This gives us two equations (one from matching the pressure distributions, and one from matching the normal velocity equations) and two unknowns $A$ and $C$. The general solutions found in parts (b) and (c) can be uniquely solved by setting these two equations equal to each other.
 
 \end{document}
