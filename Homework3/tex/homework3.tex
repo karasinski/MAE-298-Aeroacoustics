@@ -50,7 +50,27 @@ where $f=0$ describes the arbitrary moving body. Show that the wave equation who
 where $\vec{n}$ is the unit normal vector on the surface and $p_n = \nabla p \cdot \vec{n}$. Now we can use the Green’s function of the wave equation in the unbounded space, the so-called free-space Green’s function, to find the unknown function $p(\vec{x}, t)$ everywhere in space. The result is the Kirchhoff formula for moving surfaces.
 
 \solution
+
 Using the rules of generalized differentiation, we obtain
+\begin{align*}
+\dfrac{\overline{d}\widetilde{p}}{dx}
+    &= \dfrac{d\widetilde{p}}{dx} + \Delta\widetilde{p} \delta(x - c) \\
+    &= \dfrac{d\widetilde{p}}{dx} + \Delta\widetilde{p} \delta(f) \\
+\overline{\nabla} \widetilde{p}
+&= \dfrac{\overline{\partial}\widetilde{p}}{\partial x_i}
+= \dfrac{\overline{\partial}\widetilde{p}}{\partial f}
+    \dfrac{\partial f}{\partial x_i} \\
+&= \left( \dfrac{\partial\widetilde{p}}{\partial f}
+    + \Delta \widetilde{p} \delta(f) \right)
+    \dfrac{\partial f}{\partial x_i} \\
+&= \dfrac{\partial\widetilde{p}}{\partial f} \dfrac{\partial f}{\partial x_i}
+    + \Delta \widetilde{p} \dfrac{\partial f}{\partial x_i} \delta(f) \\
+&= \dfrac{\partial\widetilde{p}}{\partial x_i}
+    + \dfrac{\partial f}{\partial x_i} \Delta \widetilde{p} \delta(f) \\
+&= \nabla\widetilde{p} + \nabla f \Delta\widetilde{p} \delta(f) \\
+&= \nabla\widetilde{p} + \hat{n} p \delta(f)
+\end{align*}
+Applying the generalized differentiation to the acoustic wave equation
 \begin{align*}
 \dfrac{1}{c} \dfrac{\overline{\partial} \widetilde{p}}{\partial t} =& \dfrac{1}{c} \dfrac{\partial \widetilde{p}}{\partial t} - M_n p \delta (f) \\
 \dfrac{1}{c} \dfrac{\overline{\partial}^2 \widetilde{p}}{\partial t^2} =& \dfrac{1}{c} \dfrac{\partial^2 \widetilde{p}}{\partial t^2}
@@ -95,10 +115,10 @@ where $g=\tau - t + r/c$, and $p_{\tau (y)} = \partial p (\vec{y}, \tau) / \part
 
 \problem{[50 points]}
 Farassat’s formulation 1 for the loading noise is given as
-\begin{align*}
+\begin{align} \label{loading_noise}
 4 \pi p_L^{\prime}(\vec{x}, t) = \dfrac{1}{c} \dfrac{\partial}{\partial t}
 \int_{f=0} \left[ \dfrac{L_r}{r(1-M_r)} \right]_{ret} dS + \int_{f=0} \left[ \dfrac{L_r}{r^2(1-M_r)} \right]_{ret} dS
-\end{align*}
+\end{align}
 where $L_r = \Delta P \vec{n} \cdot \hat{r} = \Delta P \cos \theta$. This formulation 1 is difficult to compute since the observer time differentiation is outside the integrals. A much more efficient and practical formulation can be derived by carrying the observer time derivate inside the integrals (formulation 1A). Show that formulation 1A for the loading noise becomes
 \begin{align*}
 4 \pi p_L^{\prime}(\vec{x}, t) =& \dfrac{1}{c} \int_{f=0} \left[ \dfrac{\dot{L_r}}{r(1-M_r)^2} \right]_{ret} dS \\
@@ -106,5 +126,168 @@ where $L_r = \Delta P \vec{n} \cdot \hat{r} = \Delta P \cos \theta$. This formul
 + \dfrac{1}{c} \int_{f=0} \left[ \dfrac{L_r (r \dot{M_r} + c(M_r-M^2))}{r^2(1-M_r)^3} \right]_{ret} dS
 \end{align*}
 where $L_M = \vec{L} \cdot \vec{M}$.
+
+\solution
+From the in class notes, we know that
+\begin{align*}
+\left. \dfrac{\partial}{\partial t} \right|_x &= \left[ \dfrac{1}{1 - M_r} \dfrac{\partial}{\partial \tau} \right]_{ret}
+\end{align*}
+where $\frac{\partial}{\partial t}$ is evaluated along surface $x$. Applying this rule to Equation~(\ref{loading_noise})
+\begin{align} \label{where_am_i}
+\dfrac{\partial}{\partial t} \int_{f=0} \left[ \dfrac{L_r}{r (1 - M_r)} \right]_{ret} ds
+&= \int_{f=0} \left[
+    \dfrac{1}{1 - M_r} \dfrac{\partial}{\partial \tau}
+    \left( \dfrac{L_r}{r   (1 - M_r)}  \right)
+    \right]_{ret} ds
+\end{align}
+The produce rule requires us to calculate the derivative of each part of the equation. Evaluating each part of this derivative before taking the actual derivative yields
+\begin{align*}
+\dfrac{\partial}{\partial\tau} \left( L_r \right) = \dot{L}_r
+\end{align*}
+From the class notes we compute the time derivative of $\frac{1}{r}$ using the chain rule:
+\begin{align*}
+\dfrac{\partial}{\partial\tau} \left( \dfrac{1}{r} \right)
+&= \dfrac{\partial}{\partial r} \left( \dfrac{1}{r} \right) \dfrac{\partial r}{\partial\tau} \\
+&= -\dfrac{1}{r^2} \dfrac{\partial r}{\partial y_i} \dfrac{\partial y_i}{\partial \tau} \\
+&= -\dfrac{1}{r^2} (-1) (V_r) \\
+&= \dfrac{V_r}{r^2}
+\end{align*}
+Computing the time derivative of $\frac{1}{1 - M_r}$
+\begin{align}
+\dfrac{\partial}{\partial\tau} \left( \dfrac{1}{1 - M_r} \right)
+&= \dfrac{1}{(1 - M_r)^2} \dfrac{\partial}{\partial\tau}(M_r) \nonumber \\
+&= \dfrac{1}{(1 - M_r)^2} \dfrac{\partial}{\partial\tau} \left( \vec{M} \cdot \hat{r} \right) \nonumber \\
+&= \dfrac{1}{(1 - M_r)^2} \left \{ \dfrac{\partial\vec{M}}{\partial\tau} \cdot\hat{r} + \vec{M} \dfrac{\partial\hat{r}}{\partial\tau} \right \} \nonumber \\
+&= \dfrac{1}{(1 - M_r)^2} \left \{ \dot{\vec{M}}\cdot\hat{r} + \vec{M} \dfrac{\partial\hat{r}}{\partial\tau} \right \}  \label{yolo2}
+\end{align}
+Solving for $\frac{\partial\hat{r}}{\partial\tau}$ yields
+\begin{align}
+\dfrac{\partial}{\partial\tau} \left( \hat{r} \right)
+&= \dfrac{\partial}{\partial\tau} \left( \dfrac{\vec{r}}{r} \right)
+    = \dfrac{1}{r} \dfrac{\partial \vec{r}}{\partial\tau}
+    + \vec{r}\dfrac{\partial\vec{r}}{\partial\tau} \left(\dfrac{1}{r} \right) \nonumber \\
+&= \dfrac{-\vec{V}}{r} + \vec{r} \cdot \dfrac{V_r}{r^2}
+    = \dfrac{-\vec{V}}{r} + \dfrac{1}{r} \dfrac{\vec{r}}{r} \cdot V_r  \nonumber \\
+&= -\dfrac{\vec{V}}{r} + \dfrac{1}{r} \hat{r} \cdot V_r \nonumber \\
+&= -\dfrac{c}{r} \left( \vec{M} - \vec{r} \cdot M_r \right) \label{yolo3}
+\end{align}
+Plugging the solution for Equation~\ref{yolo3} into Equation~\ref{yolo2}
+\begin{align*}
+\dfrac{\partial}{\partial\tau} \left( \dfrac{1}{1 - M_r} \right)
+&= \dfrac{1}{(1 - M_r)^2} \left \{ \dot{\vec{M}}\cdot\hat{r} + \vec{M} \dfrac{\partial\hat{r}}{\partial\tau} \right \} \\
+&= \dfrac{1}{(1 - M_r)^2} \left \{ \dot{\vec{M}}\cdot\hat{r} + \vec{M} \dfrac{c}{r} \left( -\vec{M} + \vec{r} \cdot M_r \right) \right \} \\
+&= \dfrac{1}{(1 - M_r)^2} \left \{ \dot{\vec{M}}_r +\dfrac{c}{r}\left( M_r^2 -|\vec{M}|^2  \right) \right \} \\
+&= \dfrac{ \dot{\vec{M}}_r + \dfrac{c}{r} \left( M_r^2 -|\vec{M}|^2  \right) } {(1 - M_r)^2} \\
+&= \dfrac{ r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) } {r (1 - M_r)^2}
+\end{align*}
+Using these results, we can take the chain rule and find the derivative
+\begin{align}
+\dfrac{\partial}{\partial \tau} \left[ \dfrac{L_r}{r (1 - M_r)} \right]
+& = \dfrac{\partial L_r}{\partial \tau} \dfrac{1}{r (1 - M_r)}
+    + L_r\dfrac{\partial}{\partial \tau} \left[ \dfrac{1}{r (1 - M_r)} \right] \nonumber \\
+& = \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + L_r \left[
+    \dfrac{\partial}{\partial\tau} \left(\dfrac{1}{r}\right) \dfrac{1}{1 - M_r}
+    + \dfrac{1}{r} \dfrac{\partial}{\partial\tau} \left(\dfrac{1}{1-M_r}\right)
+    \right] \nonumber \\
+& = \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + L_r \left[
+    \dfrac{V_r}{r^2 (1 - M_r)}
+    + \dfrac{ r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) }
+        {r^2 (1 - M_r)^2}
+    \right] \nonumber \\
+&= \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + \dfrac{L_r V_r}{r^2 (1 - M_r)}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^2} \nonumber \\
+&= \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + \dfrac{(\vec{L}\cdot\hat{r}) (\vec{V}\cdot\hat{r})}{r^2 (1 - M_r)}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^2} \nonumber \\
+&= \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + \dfrac{(\vec{L}\cdot\vec{V}) (\hat{r}\cdot\hat{r})}{r^2 (1 - M_r)}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^2} \nonumber \\
+&= \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^2} \label{yolo_swag}
+\end{align}
+where the second term has made use of the commutative property of the dot product. Finally, plugging Equation~(\ref{yolo_swag}) back into Equation~(\ref{where_am_i}) yields
+\begin{align*}
+\dfrac{\partial}{\partial t} \int_{f=0} \left[ \dfrac{L_r}{r (1 - M_r)} \right]_{ret} ds
+&= \int_{f=0} \left[
+    \dfrac{1}{1 - M_r} \dfrac{\partial}{\partial \tau}
+    \left( \dfrac{L_r}{r   (1 - M_r)}  \right)
+    \right]_{ret} ds \\
+&= \int_{f=0} \left\{
+    \dfrac{1}{1 - M_r} \left[
+    \dfrac{\dot{L}_r}{r (1 - M_r)}
+    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^2} \right]
+    \right\}_{ret} ds \\
+&= \int_{f=0} \left[
+    \dfrac{\dot{L}_r}{r (1 - M_r)^2}
+    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^3}
+    \right]_{ret} ds
+\end{align*}
+Plugging this result back into Equation~(\ref{loading_noise})
+\begin{align*}
+4\pi p_{L}' =& \dfrac{1}{c} \dfrac{\partial}{\partial t}
+      \int_{f=0} \left[ \dfrac{L_r}{r   (1 - M_r)} \right]_{ret} ds
+    + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds \\
+=& \dfrac{1}{c} \int_{f=0} \left[
+    \dfrac{\dot{L}_r}{r (1 - M_r)^2}
+    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2}
+    + \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^3}
+    \right]_{ret} ds
+    + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds \\
+=& \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds
+    + \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2} \right]_{ret} ds \\
+    &+ \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^3} \right]_{ret} ds \\
+=& \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds
+    + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)}
+        + \dfrac{\frac{1}{c} (\vec{L}\cdot\vec{V})}{r^2 (1 - M_r)^2}
+        \right]_{ret} ds \\
+    &+ \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^3} \right]_{ret} ds \\
+=& \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds
+    + \int_{f=0} \left[
+        + \dfrac{L_r + \vec{L}\cdot\vec{M}}{r^2 (1 - M_r)^2}
+        \right]_{ret} ds \\
+    &+ \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^3} \right]_{ret} ds \\
+=& \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds
+    + \int_{f=0} \left[
+        + \dfrac{L_r + L_M}{r^2 (1 - M_r)^2}
+        \right]_{ret} ds \\
+    &+ \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{ L_r \left[
+        r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
+        {r^2 (1 - M_r)^3} \right]_{ret} ds
+\end{align*}
 
 \end{document}
