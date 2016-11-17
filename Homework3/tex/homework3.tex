@@ -10,6 +10,8 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{cancel}
+\usepackage{geometry}
+\geometry{margin=0.75in}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
@@ -72,8 +74,12 @@ Using the rules of generalized differentiation, we obtain
 \end{align*}
 Applying the generalized differentiation to the acoustic wave equation
 \begin{align*}
-\dfrac{1}{c} \dfrac{\overline{\partial} \widetilde{p}}{\partial t} =& \dfrac{1}{c} \dfrac{\partial \widetilde{p}}{\partial t} - M_n p \delta (f) \\
-\dfrac{1}{c} \dfrac{\overline{\partial}^2 \widetilde{p}}{\partial t^2} =& \dfrac{1}{c} \dfrac{\partial^2 \widetilde{p}}{\partial t^2}
+\dfrac{1}{c} \dfrac{\overline{\partial} \widetilde{p}}{\partial t} =& \dfrac{1}{c} \dfrac{\partial \widetilde{p}}{\partial t} + \dfrac{-V_n}{c} p \delta (f) \\
+=& \dfrac{1}{c} \dfrac{\partial \widetilde{p}}{\partial t} - M_n p \delta (f) \\
+\end{align*}
+where the relations $\frac{D f}{D t} = 0 = \frac{\partial f}{\partial t} + V_n \implies \frac{\partial f}{\partial t} = -V_n$ has been used. Taking the second derivative
+\begin{align*}
+\dfrac{1}{c^2} \dfrac{\overline{\partial}^2 \widetilde{p}}{\partial t^2} =& \dfrac{1}{c^2} \dfrac{\partial^2 \widetilde{p}}{\partial t^2}
 - \dfrac{M_n}{c} \dfrac{\partial p}{\partial t} \delta (f)
 -\dfrac{1}{c} \dfrac{\partial}{\partial t} [M_n p \delta (f)]
 \end{align*}
@@ -148,9 +154,9 @@ From the class notes we compute the time derivative of $\frac{1}{r}$ using the c
 \begin{align*}
 \dfrac{\partial}{\partial\tau} \left( \dfrac{1}{r} \right)
 &= \dfrac{\partial}{\partial r} \left( \dfrac{1}{r} \right) \dfrac{\partial r}{\partial\tau} \\
-&= -\dfrac{1}{r^2} \dfrac{\partial r}{\partial y_i} \dfrac{\partial y_i}{\partial \tau} \\
-&= -\dfrac{1}{r^2} (-1) (V_r) \\
-&= \dfrac{V_r}{r^2}
+% &= -\dfrac{1}{r^2} \dfrac{\partial r}{\partial y_i} \dfrac{\partial y_i}{\partial \tau} \\
+% &= -\dfrac{1}{r^2} (-1) (V_r) \\
+&= \dfrac{-V_r}{r^2}
 \end{align*}
 Computing the time derivative of $\frac{1}{1 - M_r}$
 \begin{align}
@@ -192,27 +198,27 @@ Using these results, we can take the chain rule and find the derivative
     \right] \nonumber \\
 & = \dfrac{\dot{L}_r}{r (1 - M_r)}
     + L_r \left[
-    \dfrac{V_r}{r^2 (1 - M_r)}
+    \dfrac{-V_r}{r^2 (1 - M_r)}
     + \dfrac{ r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) }
         {r^2 (1 - M_r)^2}
     \right] \nonumber \\
 &= \dfrac{\dot{L}_r}{r (1 - M_r)}
-    + \dfrac{L_r V_r}{r^2 (1 - M_r)}
+    - \dfrac{L_r V_r}{r^2 (1 - M_r)}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^2} \nonumber \\
 &= \dfrac{\dot{L}_r}{r (1 - M_r)}
-    + \dfrac{(\vec{L}\cdot\hat{r}) (\vec{V}\cdot\hat{r})}{r^2 (1 - M_r)}
+    - \dfrac{(\vec{L}\cdot\hat{r}) (\vec{V}\cdot\hat{r})}{r^2 (1 - M_r)}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^2} \nonumber \\
 &= \dfrac{\dot{L}_r}{r (1 - M_r)}
-    + \dfrac{(\vec{L}\cdot\vec{V}) (\hat{r}\cdot\hat{r})}{r^2 (1 - M_r)}
+    - \dfrac{(\vec{L}\cdot\vec{V}) (\hat{r}\cdot\hat{r})}{r^2 (1 - M_r)}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^2} \nonumber \\
 &= \dfrac{\dot{L}_r}{r (1 - M_r)}
-    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)}
+    - \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^2} \label{yolo_swag}
@@ -227,14 +233,14 @@ where the second term has made use of the commutative property of the dot produc
 &= \int_{f=0} \left\{
     \dfrac{1}{1 - M_r} \left[
     \dfrac{\dot{L}_r}{r (1 - M_r)}
-    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)}
+    - \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^2} \right]
     \right\}_{ret} ds \\
 &= \int_{f=0} \left[
     \dfrac{\dot{L}_r}{r (1 - M_r)^2}
-    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2}
+    - \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^3}
@@ -247,16 +253,16 @@ Plugging this result back into Equation~(\ref{loading_noise})
     + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds \\
 =& \dfrac{1}{c} \int_{f=0} \left[
     \dfrac{\dot{L}_r}{r (1 - M_r)^2}
-    + \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2}
+    - \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2}
     + \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^3}
-    \right]_{ret} ds
-    + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds \\
+    \right]_{ret} ds \\
+    &+ \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds \\
 =& \dfrac{1}{c} \int_{f=0} \left[
         \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)} \right]_{ret} ds
     + \dfrac{1}{c} \int_{f=0} \left[
-        \dfrac{\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2} \right]_{ret} ds \\
+        \dfrac{-\vec{L}\cdot\vec{V}}{r^2 (1 - M_r)^2} \right]_{ret} ds \\
     &+ \dfrac{1}{c} \int_{f=0} \left[
         \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
@@ -264,27 +270,27 @@ Plugging this result back into Equation~(\ref{loading_noise})
 =& \dfrac{1}{c} \int_{f=0} \left[
         \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds
     + \int_{f=0} \left[ \dfrac{L_r}{r^2 (1 - M_r)}
-        + \dfrac{\frac{1}{c} (\vec{L}\cdot\vec{V})}{r^2 (1 - M_r)^2}
+        - \dfrac{\frac{1}{c} (\vec{L}\cdot\vec{V})}{r^2 (1 - M_r)^2}
         \right]_{ret} ds \\
     &+ \dfrac{1}{c} \int_{f=0} \left[
         \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^3} \right]_{ret} ds \\
 =& \dfrac{1}{c} \int_{f=0} \left[
-        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds
-    + \int_{f=0} \left[
-        + \dfrac{L_r + \vec{L}\cdot\vec{M}}{r^2 (1 - M_r)^2}
-        \right]_{ret} ds \\
-    &+ \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds \\
+    &+ \int_{f=0} \left[
+        + \dfrac{L_r - \vec{L}\cdot\vec{M}}{r^2 (1 - M_r)^2}
+        \right]_{ret} ds
+    + \dfrac{1}{c} \int_{f=0} \left[
         \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^3} \right]_{ret} ds \\
 =& \dfrac{1}{c} \int_{f=0} \left[
-        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds
-    + \int_{f=0} \left[
-        + \dfrac{L_r + L_M}{r^2 (1 - M_r)^2}
-        \right]_{ret} ds \\
-    &+ \dfrac{1}{c} \int_{f=0} \left[
+        \dfrac{\dot{L}_r}{r (1 - M_r)^2} \right]_{ret} ds \\
+    &+ \int_{f=0} \left[
+        + \dfrac{L_r - L_M}{r^2 (1 - M_r)^2}
+        \right]_{ret} ds
+    + \dfrac{1}{c} \int_{f=0} \left[
         \dfrac{ L_r \left[
         r\dot{\vec{M}}_r + c \left( M_r^2 - |\vec{M}|^2 \right) \right] }
         {r^2 (1 - M_r)^3} \right]_{ret} ds
