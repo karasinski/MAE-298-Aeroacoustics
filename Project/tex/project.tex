@@ -186,11 +186,51 @@ Sonic booms have been found to have some effects on the quality of sleep in labo
   \label{fig:startle}
 \end{figure}
 
+\subsection{Indoor vs Outdoor Exposure}
 
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/fsm.png}
+  \caption{Parameters for front-shock-minimized (FSM) sonic boom signatures. $\tau_1=$front-shock rise time, $\tau_2=$secondary rise time, $\Delta p_{max}=$peak overpressure, and $\Delta p_f=$front-shock overpressure~\cite{leatherwood2002summary}}
+  \label{fig:fsm}
+\end{figure}
 
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/langley-simulator.png}
+  \caption{NASA Langley sonic boom simulator~\cite{leatherwood2002summary}}
+  \label{fig:langley-simulator}
+\end{figure}
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/fsm-comparison.png}
+  \caption{Effect of peak overpressure level and overpressure ratio on subjective loudness for FSM signatures, $\tau_1=$1 ms~\cite{leatherwood2002summary}}
+  \label{fig:fsm-comparison}
+\end{figure}
+
+Recent studies in the human perception of sonic booms have mainly focused on their perception indoors and the difference in their perception between in and outdoor exposure~\cite{leatherwood2002summary, sullivan2010human}. In addition to the N-waves discussed above, symmetrical front-shock-minimized (FSM) waveforms have also been tested. FSM waves compare well with the sonic boom waveforms experienced indoors. Leatherwood completed an experiment with sixty test subjects was conducted at the Langley Research Center sonic boom simulator to establish the effects of modifying the properties of FSM waveforms, see Figures~\ref{fig:fsm} and~\ref{fig:langley-simulator}~\cite{leatherwood1992laboratory}. These subjects rated the subjective loudness of 180 different waveforms on an 11-point numerical scale from ``not loud at all'' to ``extremely loud.'' Compared to the N-wave, all of the FSM waves were as quiet or quieter, with lower overpressure ratios resulting in lower loudness ratings~\cite{leatherwood2002summary}, see Figure~\ref{fig:fsm-comparison}.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/indoor-outdoor.png}
+  \caption{Boom signatures measured in simulator for three boom types and three simulated listening conditions. Boom types are (a) N waves, (b) FSM with overpressure ratio of 0.5, and (c) FSM with overpressure ratio of 0.75. Front-shock rise time for all boom types shown in 2 ms.~\cite{leatherwood2002summary}}
+  \label{fig:indoor-outdoor}
+\end{figure}
+
+While the previous study showed that waveforms similar to what would be experienced indoors result in lower loudness than waveforms experienced outdoors, it was unclear how these effects would translate to reality. Much of the research into indoor sonic boom response is challenging ``because of room acoustics and wall attenuation effects, indoor waveforms generally lack distinctive rise time characteristics and lose significant high-frequency spectral energy. The result is an increase in relative emphasis of low-frequency spectral components of the indoor waveforms which could introduce annoyance components not present in outdoor waveforms.~\cite{leatherwood2002summary}'' Specifically, there is concern that wall, furniture, and the house in general can rattle, causing secondary noise which has the potential to be more annoying than the sonic boom itself.
+
+Leatherwood followed up this experiment with another set of simulated indoor signatures derived from the application of house filters that approximated the noise reduction characteristics of a residential structure~\cite{leatherwood1993loudness}. Seventy two subjects were exposed to 135 simulated N-wave and FSM signatures. The results of this experiment were used to compare the differences between loudness and annoyance of sonic booms in outdoor and two indoor conditions. Two different house filters were used to simulate a typical residential structure with and without the windows closed. Example signatures for outdoors, indoors with windows closed, and indoors with windows open through three different overpressure ratios can be seen in Figure~\ref{fig:indoor-outdoor}. Figure~\ref{fig:simulated-comparisons} shows the relation between loudness and annoyance and perceived level for three simulated listening conditions. Fit lines for loudness and annoyance for the simulated outdoor waveforms were identical, implying that the outdoor waveforms did ``not contain annoyance components beyond those attributable to loudness.~\cite{leatherwood2002summary}'' Both indoor waveforms, especially the windows-closed waveform, show an increase in annoyance beyond the loudness values. This increase in annoyance is associated with an increased power in the low-frequency content. A PL increase in annoyance over loudness of 4.2 dB was seen for the windows-closed condition, and 1.6 dB was observed for the windows-open condition~\cite{leatherwood1993loudness}. The preferred subjective measurement is annoyance PL was recommended as the subjective sonic boom prediction metric based on these results, as loudness may not be sufficient.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figs/simulated-comparisons.png}
+  \caption{Loudness and annoyance response comparisons for three simulated listening conditions: (a) outdoor condition; (b) indoor, windows-closed condition; and (c) indoor, windows-open condition~\cite{leatherwood2002summary}}
+  \label{fig:simulated-comparisons}
+\end{figure}
 
 \bibliographystyle{ieeetr}
-\nocite{*}
+% \nocite{*}
 \bibliography{bib}
 
 \end{document}
