@@ -1,0 +1,152 @@
+\typeout{}\typeout{If latex fails to find aiaa-tc, read the README file!}
+
+\documentclass[]{aiaa-tc}% insert '[draft]' option to show overfull boxes
+
+\usepackage{mathptmx}         %CHANGE FONT TO TIMES NEW ROMAN
+\usepackage{amsmath}          % for formula writing (i.e. 'split', etc)
+\usepackage{rotate}           %rotate/mirror images
+\usepackage{cancel}           %draw lines through math to show "goes to zero"
+\usepackage{xfrac}            %allows slated and side fractions
+\usepackage{subcaption}       %allows captioning individual subfigures
+\usepackage{multicol}         %enable environment with multiple columns
+\usepackage[mode=buildnew]{standalone}% requires -shell-escape
+% compile with `pdflatex -shell-escape main` or `xelatex  -shell-escape main`
+
+\usepackage{tikz}             %for creating vector graphics diagrams
+\usetikzlibrary{backgrounds}  %put backgrounds behind tikz figures
+\usetikzlibrary{calc}         %perform calculations within $$
+\usetikzlibrary{positioning}  %position tikz elements using "right of, etc"
+\usetikzlibrary{angles}       %label angles between lines with arcs
+\usetikzlibrary{quotes}       %Put angle label in quotes
+\usetikzlibrary{patterns}     %Patterns to fill shapes with
+
+\usepackage[english]{babel}
+\usepackage{blindtext}
+
+\title{MAE 298 Aeroacoustics \\ Human Response to Sonic Booms}
+
+\author{ John Karasinski \\
+  {\normalsize\itshape Graduate Student Researcher} \\
+  {\normalsize\itshape Department of Mechanical and Aerospace Engineering} \\
+  {\normalsize\itshape University of California, Davis, CA 95616}
+}
+
+% Define commands to assure consistent treatment throughout document
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\class}[1]{\texttt{#1}}
+\newcommand{\package}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\BibTeX}{\textsc{Bib}\TeX}
+
+\usepackage[nomarkers,figuresonly]{endfloat}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+% Choose one area in aeroacoustics, write down a literature survey, and present the summary in class.
+% What's in a project?
+% \blindtext[10]
+
+\section{Introduction and Early Years}
+When supersonic flight first became a reality in the late 1940s, the sonic boom had not been predicted. Once people first heard this very loud, unexpected sound, however, they had to wonder about its source. While shock waves associated with supersonic motion through air was known, it was not expected that this sound would reach the ground from such a high altitude as to cause an audible signal~\cite{von1966effects}. As a result of these sonic booms, supersonic flight over land has been restricted to military aircraft flying over specially designated zones in order to avoid disturbing civilians. Despite this, extensive research into predicting, controlling, and minimizing sonic booms has been conducted through numerous flight test programs over the years. Interest in commercial supersonic transportation led to research in the safety and annoyance of sonic booms for large population centers.
+
+Basic sonic boom physics research began in earnest in 1950 by the United States Air Force (USAF) at Wright-Patterson Air Force Base. Initial research focused on correlating actual near and far field pressure measurements from the sonic booms with those predicted by theory~\cite{von1957aircraft}. The effects of sonic booms on humans, however, was not initially deemed important enough study. It was generally believed that humans and animals would not be harmed as long as they were far enough away from the source of the sonic boom~\cite{von1966effects}. Before long, however, research efforts on the physics of sonic booms and their effects on structures and biology was establish by the USAF, National Aeronautics and Space Administration (NASA), and the Federal Aviation Administration (FAA), and expanded quickly in the later 1950s and 1960s. Figure~\ref{fig:research_status} outlines a brief history of early sonic boom research carried out in the United States~\cite{nixon1965sonic}.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/research-status.png}
+  \caption{History of operational sonic boom research from 1950-1965~\cite{nixon1965sonic}}
+  \label{fig:research_status}
+\end{figure}
+
+One of the first experimental studies to include human response to sonic booms was conducted in Las Vegas in 1960 and outlined in a confidential report~\cite{maglieri1961ground}. This exploratory research sought to understand ``the possibility of doing enough damage as a result of the sonic boom to warrant its use as a tactical weapon against structures, equipment, and personnel.'' The experiment included recording near and far field pressures resulting from the sonic booms of two aircraft between Mach 1.05 and 1.16 for altitudes from about 50 to 890 feet. They researchers found that the wave shape from each plane was unique to the external geometry of the plane, see Figure~\ref{fig:shock_config}. Of the 214 window-glass breakage experiments performed, 51 damage points were obtained. The likelihood of damaging the glass increased as the pressure increased. 50 people were placed on the the minimum-altitude flightpath of the planes during the sonic booms. No harm was reported for pressures up to 120 lb/sq ft. Ear muffs were found to be useful in reducing the intensity of the noise, but were not found to be necessary. Some people reported a brief ringing in the ears following exposure, and it was expected that some small temporary hearing loss occurred. Follow-up experiments showed similar results, and again resulted no serious harm for pressures up to 144 lb/sq ft~\cite{nixon1968sonic}.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=0.9\textwidth]{figs/plane-shock-config.png}
+  \caption{Top and side views of airplane with a typical time history of shock noise pressure~\cite{maglieri1961ground}}
+  \label{fig:shock_config}
+\end{figure}
+
+These experiments showed that sonic booms were not physically damaging to humans, even when exposed at an extremely low altitude. Increasing interest in commercial supersonic transportation in the late 1960s led to further research into what intensity and frequency of sonic booms was acceptable by communities and society in general~\cite{nixon1965results, power1964sonic, nixon1966effects}. While no physical harm is caused by sonic booms, there is concern that sonic booms can interfere and annoy, causing startle and sleep disturbances. Unlike most loud noises, sonic booms are very sudden can even startle people used to experiencing them. There was additional concern that this startling effect could cause secondary problems due to resulting distraction. The community reaction repeated sonic booms is ``complex and highly variable and as such does not lend itself to firm predictive schemes nor inflexible exposure criteria~\cite{nixon1966effects}.'' Nixon continues, ``This response was not a function of overpressure alone but instead involved other elements of the stimulus exposure as well as a wide range of sociopsychological variables.'' While almost all residents report experiencing interferences with ordinary living activities, feelings of annoyance are generally fairly low, around 35\%.
+
+Early investigations into the effects of sonic booms on humans found that, in general, there were fairly few negative side effects. As one community study from the mid-1960s claims ``[a]lthough millions of people were repeatedly exposed to sonic booms over a period of several months, no direct adverse physiological effects occurred and none was expected on the basis of existing knowledge.~\cite{nixon1966effects}'' These early studies provided important insight into the broad effects of sonic booms on humans, but did not include any laboratory studies of human perception. Several of these studies noted that overpressure alone was not sufficient to characterize the annoyance of the sonic booms, but none adequately define what metrics are necessary.
+
+\section{Human Response to Noise}
+\subsection{Human Auditory System}
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/ear-cross-section.png}
+  \caption{Cross section of the human ear~\cite{powell1991human}}
+  \label{fig:ear_cross}
+\end{figure}
+
+The human auditory system is capable of perceiving pressure fluctuations over a wide range of frequencies. There is not a one-to-one relationship between sound energy and any given noise effect, however, and it ``is necessary to thoroughly understand the physical characteristics of the sound and how each of those characteristics can affect human response.~\cite{powell1991human}'' Noise can have many adverse effects, including hearing loss, task performance degradation, speech intelligibility reduction, sleep interruption, and general feelings of annoyance. To understand how different characteristics of sound can cause these effects, it's first important to understand more about the perception of sound.
+
+The auditory system consists of the outer, middle, and inner ears and the associated pathways to the brain, see Figure~\ref{fig:ear_cross}. Pressure fluctuations travel through the external auditory meatus and cause the the tympanic membrane to vibrate, which forms a mechanical linkage with the fluid in the inner ear. Vibratory motion in the fluid pass the traveling wave through the cochlear partition, ultimately exciting the hair cells on the basilar membrane. The excitation of the hair cells is transmitted to the brain via neural signals~\cite{powell1991human}.
+
+Given the complicated process to transmit pressure waves to neural signals, it should not be surprising that the response of the auditory system is not easy to predict. Despite this complex system, some generalizations can be made~\cite{powell1991human}:
+\begin{itemize}
+\item Human auditory system is sensitive to a wide range of frequencies, from 20 Hz to 20 kHz
+\item Nonuniform response over this range, with low sensitivity on both the lower and upper ranges
+\item One sound can mask the perception of a lower intensity sound
+\item High sound pressure levels can cause temporary and permanent shifts in hearing ability
+\end{itemize}
+
+\subsection{Noise Metrics}
+There have been a variety of metrics used to predict the loudness, noisiness, and annoyance of sounds based off their characteristics. While the human auditory system is sensitive over a wide range of frequencies, the response is not flat over the entire range. Several techniques, the simplest of which are frequency weighting filters, have been created to predict the effects of noise based off their measurable characteristics.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/sla.png}
+  \caption{Relative response of the A-weighting filter~\cite{powell1991human}}
+  \label{fig:sla}
+\end{figure}
+
+The loudness level of noise is commonly measured with the sound pressure level (SPL) modified by the A-weighting filter, resulting in the A-weighted sound level (SLA). SLA has been found to correlate very well noisiness and loudness of many sounds regardless of SPL~\cite{powell1991human}. The power at a certain frequency can be found by solving for the octave or 1/3 octave band SPL. To solve for a specific octave band frequency, the frequencies within that band can be added via
+\begin{align}
+L_A = 10 \log_{10} \left[ \sum_{i=1}^n 10^{L_A(i)/10} \right]
+\end{align}
+where $L_A(i)$ are the weighted SPL's of the frequency bands. Once the SPL is found at any specific frequency, the relative response from the A-weighting filter can be applied to approximate the perceived loudness.
+
+While SLA is the simplest estimation of loudness, various loudness levels prediction schemes have been developed over the years~\cite{stevens1961procedure, zwicker1966comparison}. Stevens created a loudness levels ($LL_S$) scheme called Mark VI which accounts for some nonlinear effects in frequency characteristics. His loudness unit, sone, is defined as the loudness of a 1-kHz pure tone with a SPL of 40 dB~\cite{powell1991human}. The loudness in sones of each octave can be determined, and the total loudness can be found from summing
+\begin{align}
+S_t = S_m + F \left[ \sum_{i=1}^n S(i) - S_m \right]
+\end{align}
+where $S_m$ is the loudness of the loudest band, and F is an experimentally determined masking factor. The total loudness level in phons is calculated by
+\begin{align}
+L_L = 40 + 10 \log_2 S_t
+\label{eq:ll}
+\end{align}
+Adjusting for nonlinear effects results in some improvement in experimental conditions over a simple SLA~\cite{stevens1961procedure}. The adjustment required by the A-weighting filter can be seen in Figure~\ref{fig:sla}. Zwicker developed another loudness level ($LL_Z$) scheme accounting for additional complexities in the human auditory system~\cite{zwicker1966comparison}. Initially developed for use to calculate loudness by hand for stationary sounds, computers then allowed the method to be used for nonstationary sounds~\cite{powell1991human}. After adjusting for ``critical bandwidth'' at low frequencies and different sensitivities to different types of sound fields, the final loudness level is calculated using Equation~\ref{eq:ll}~\cite{zwicker1966comparison}.
+
+The perceived noise level (PNL) was initially developed to predict the reported annoying quality of jet aircraft sounds, and is the most commonly used metric to predict the noisiness level of sounds~\cite{kryter1959scaling}. PNL is calculated in a very similar manner to the loudness level, and the unit of perceived noisiness, noy, is defined as the noisiness of an octave band centered at 1 kHz with a SPL of 40 dB~\cite{powell1991human}. Similarly to the A-weighting filter, a D-weighting filter is commonly used to to adjust for the nonlinearities in the human auditory system. Comparing the A-weighting and D-weighting filters results in a large degree of similarity, see Figure~\ref{fig:d-weighting}. Similar to with loudness, $L_A$, the D-weighting is applied to the octave or 1/3 octave SPL's via
+\begin{align}
+L_D = 10 \log_{10} \left[ \sum_{i=1}^n 10^{L_D(i)/10} \right]
+\end{align}
+to produce a final D-weighted sound level (SLD). Extreme similarities in the loudness and noisiness had led researchers to propose that both are a result of the same auditory response~\cite{stevens1972perceived}. A perceived level (PL) was developed to calculate both loudness and nosiness using the same set of input data. After it was proposed that longer duration sounds were more annoying than shorter duration noises, the effective perceived noise level (EPNL) was established~\cite{noisestandards}. EPNL is used as a certification metric for new aircraft and engines.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/d-weighting.png}
+  \caption{Relative response of the D-weighting filter~\cite{powell1991human}}
+  \label{fig:d-weighting}
+\end{figure}
+
+At least one serious experiment was completed to test the practical value of different noise metrics~\cite{ollerhead1971evaluation}. Up to 32 subjects took part in laboratory paired comparison tests to judge the perceived levels of 120 different aircraft flyover recordings. 18 different noise rating methods were selected as candidate metrics, with the primary objective of determining which methods were the most consistent. The experimenters tested different categories of aircraft sound, including turbojet (or fan) powered aircraft, propeller turbine aircraft, piston engined aircraft, and helicopters. Noise rating procedures were tested to determine how accurately and consistently subjects could measure perceived levels of sounds as compared to a standard reference of an octave band of noise centered at 1000 Hz~\cite{ollerhead1971evaluation}. They found that significant differences existed between different scales, and that the scales determined by Stevens, Zwicker, and Kyter performed the most consistently, though, with the exception of Zwicker's scheme, these scales overestimated the perceived level over the SPL range tested. The experimenters also found distinct differences in the applicability of different scales to the sounds in the four different aircraft categories~\cite{ollerhead1971evaluation}. Partial results of this experiment are reproduced in Figure~\ref{fig:noise-metrics}.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/noise-metrics.png}
+  \caption{Prediction error for different noise metrics~\cite{ollerhead1971evaluation}}
+  \label{fig:noise-metrics}
+\end{figure}
+
+\bibliographystyle{ieeetr}
+\nocite{*}
+\bibliography{bib}
+
+\end{document}
