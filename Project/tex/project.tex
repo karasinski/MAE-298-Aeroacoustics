@@ -38,6 +38,15 @@
 \newcommand{\file}[1]{\texttt{#1}}
 \newcommand{\BibTeX}{\textsc{Bib}\TeX}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
 \usepackage[nomarkers,figuresonly]{endfloat}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,7 +145,7 @@ to produce a final D-weighted sound level (SLD). Extreme similarities in the lou
   \label{fig:d-weighting}
 \end{figure}
 
-At least one serious experiment was completed to test the practical value of different noise metrics~\cite{ollerhead1971evaluation}. Up to 32 subjects took part in laboratory paired comparison tests to judge the perceived levels of 120 different aircraft flyover recordings. 18 different noise rating methods were selected as candidate metrics, with the primary objective of determining which methods were the most consistent. The experimenters tested different categories of aircraft sound, including turbojet (or fan) powered aircraft, propeller turbine aircraft, piston engined aircraft, and helicopters. Noise rating procedures were tested to determine how accurately and consistently subjects could measure perceived levels of sounds as compared to a standard reference of an octave band of noise centered at 1000 Hz~\cite{ollerhead1971evaluation}. They found that significant differences existed between different scales, and that the scales determined by Stevens, Zwicker, and Kyter performed the most consistently, though, with the exception of Zwicker's scheme, these scales overestimated the perceived level over the SPL range tested. The experimenters also found distinct differences in the applicability of different scales to the sounds in the four different aircraft categories~\cite{ollerhead1971evaluation}. Partial results of this experiment are reproduced in Figure~\ref{fig:noise-metrics}.
+At least one serious experiment was completed to test the practical value of different noise metrics~\cite{ollerhead1971evaluation}. Up to 32 subjects took part in laboratory paired comparison tests to judge the perceived levels of 120 different aircraft flyover recordings. 18 different noise rating methods were selected as candidate metrics, with the primary objective of determining which methods were the most consistent. The experimenters tested different categories of aircraft sound, including turbojet (or fan) powered aircraft, propeller turbine aircraft, piston engined aircraft, and helicopters. Noise rating procedures were tested to determine how accurately and consistently subjects could measure perceived levels of sounds as compared to a standard reference of an octave band of noise centered at 1000 Hz~\cite{ollerhead1971evaluation}. They found that significant differences existed between different scales, and that the scales determined by Stevens, Zwicker, and Kyter performed the most consistently, though, with the exception of Zwicker's scheme, these scales overestimated the perceived level over the SPL range tested. The experimenters also found distinct differences in the applicability of different scales to the sounds in the four different aircraft categories~\cite{ollerhead1971evaluation}. Partial results of this experiment are reproduced in Figure~\ref{fig:noise-metrics}. Follow up studies to this experiment have found similar conclusions, with the $LL_Z$, $LL_S$ and PNL metrics performing approximately the same, and constantly outperforming other metrics~\cite{mccurdy1982annoyance, scharf1979comparison, powell1991human}. McCurdy and Clemans propeller and jet aircraft annoyance study used similar methodology and found that PNL, PL and $LL_S$ were somewhat superior to SLD and SLA~\cite{mccurdy1982annoyance}. Scharf and Hellman reanalyzed data from 23 studies of environmental noises and found that $LL_S$, PL, PNL, and $LL_Z$ generally better predicated loudness and acceptability than weighted metrics such as SLA, SLD, and SLE~\cite{scharf1979comparison}.
 
 \begin{figure}[tb!]
   \centering
@@ -144,6 +153,41 @@ At least one serious experiment was completed to test the practical value of dif
   \caption{Prediction error for different noise metrics~\cite{ollerhead1971evaluation}}
   \label{fig:noise-metrics}
 \end{figure}
+
+\section{Sonic Booms}
+Concern over the adverse effects of sonic booms has resulted in the prohibition of commercial supersonic flight over land within the United States~\cite{ollerhead1971evaluation}. There has been concern over the psychological and physiological response of humans and animals, as well as potential damage to structures and buildings. Additional concern into the effects of humans experiencing sonic booms, especially the startle response, has seen extra focus. In the early 1970s researchers were concerned with minimizing the possible undesirable effects on people of repeated sonic boom exposures~\cite{von1972human}. Various observations, overflight programs, and experimental field and laboratory studies were conducted in the United States and across other countries including France and the United Kingdom.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/n-wave.png}
+  \caption{Parameters for N-wave Sonic Boom signatures~\cite{thackray1972sonic}}
+  \label{fig:n-wave}
+\end{figure}
+
+\subsection{Laboratory Tests}
+
+Laboratory tests found that loudness and annoyance of sonic booms are directly related to its energy spectral density function~\cite{johnson1969procedure}. Sonic booms are often modeled as N-waves. N-waves can be defined with just three parameters, peak overpressure, rise time, and duration, see Figure~\ref{fig:n-wave}. While peak overpressure is the most obvious contributor to loudness, it is not a sufficient factor. Rise time also plays an important role, and a decrease in rise time from 10 to 1 msec corresponds to a 13 dB increase in loudness~\cite{von1972human}. Relative annoyance and loudness are generally unaffected by N-wave signature durations, however, and durations ranging from 100 to 500 msec are generally considered the same. Except for very large rise times, of or above 10 msec, the annoyance and loudness are rated the same by human subjects. For rise times of 10 msec, however, the annoyance of subjects increases slightly more than the reported loudness. In general, decreases in rise time lead to larger loudness and annoyance, and N-wave duration has no apparent effect on either, see Figure~\ref{fig:n-wave-effects}.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/n-wave-effects.png}
+  \caption{Relative loudness and annoyance versus rise time of sonic booms from laboratory free-field judgments~\cite{von1972human}}
+  \label{fig:n-wave-effects}
+\end{figure}
+
+Startle is one of the most considered physiological responses to sonic booms, and was investigated during a psychomotor tracking task~\cite{lukas1968preliminary}. Subjects were exposed to simulated sonic booms while controlling the manual task, and myographic responses (EMGs) were taken from the contrateral trapezius muscle. Subjects were divided into groups and given different amounts of sonic boom exposure before the task, in measure the effects of adaptation. While there were clear differences between the control and experimental groups, and subjects experienced some slight adaptation over the course of four sessions, see Figure~\ref{fig:startle}. Extrapolating the change in EMG response suggests that subjects would reach the levels in the control group after 7 to 9 sessions. Other authors have expressed interest in continuing this type of experiment, as it is unclear whether subjects will adapt to the control rates, or level off at a higher value~\cite{von1972human}.
+
+Sonic booms have been found to have some effects on the quality of sleep in laboratory settings~\cite{lukas1968preliminary}. Indoor booms of varying magnitudes were generated inside of a laboratory where two subjects slept for a period of two weeks. Electroencephalograms (EEGs) were monitored continuously by the experimenters to both reveal sleep patterns and determine changes in these patterns as a result of sonic booms. Subjects were exposed to four different pressures of sonic booms at different stages of sleep. The loudest booms, at 1.6 and 2.1 psf, were found to cause significantly more wakings. Adaptation was seen for most phases of sleep, but even the quietest booms were found to wake sleepers during REM sleep. These same researchers later experimented with subjects of different age, from 7 to 72 years of age~\cite{sixsubjects}. They found large variations among subjects of the same age, and that subjects above the age of approximately 70 are much more likely than younger subjects to be awakened by younger subjects.
+
+\begin{figure}[tb!]
+  \centering
+  \includegraphics[width=\textwidth]{figs/startle.png}
+  \caption{Mean normalized muscular startle response to simulated sonic boom as a function of test section~\cite{sixsubjects}}
+  \label{fig:startle}
+\end{figure}
+
+
+
 
 \bibliographystyle{ieeetr}
 \nocite{*}
