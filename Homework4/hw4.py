@@ -1,9 +1,10 @@
+from scipy.special import jv, yv
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from scipy.special import jv, yv
-from scipy.optimize import fsolve
 import scipy
+import seaborn as sns
+sns.set(style="ticks", palette="muted", color_codes=True)
 
 
 # B = 18
@@ -29,7 +30,7 @@ def Ym_(m, val):
     return 0.5 * (yv(m - 1, val) - yv(m + 1, val))
 
 
-def eigenfunction(mu, m, Ri, Ro):
+def func(mu, m, Ri, Ro):
     '''Equation taken from "Turbomachinery Noise" notes, page 10.'''
     return Jm_(m, mu * Ro) * Ym_(m, mu * Ri) - Jm_(m, mu * Ri) * Ym_(m, mu * Ro)
 
@@ -40,7 +41,7 @@ eigenvalues = []
 for m in np.arange(15, 19):
     for initial_guess in np.linspace(0.1, 3, 300):
         try:
-            mu = scipy.optimize.broyden1(lambda guess: eigenfunction(guess, m, Ri, Ro), initial_guess)
+            mu = scipy.optimize.broyden1(lambda guess: func(guess, m, Ri, Ro), initial_guess)
             eigenvalues.append([m, mu])
         except Exception:
             pass
@@ -55,24 +56,29 @@ eigenvalues = eigenvalues.groupby('m').head()
 eigenvalues['n'] = 4 * list(np.arange(0, 5))
 print(eigenvalues.pivot('n', 'm'))
 
-# ###############################################################################
-# # Problem 2 ############################################################
-# ###############################################################################
+###############################################################################
+# Problem 2 ###################################################################
+###############################################################################
 
 
-# # def eigenfunction(m, mu, r, Ri):
-# #     '''Equation taken from "Turbomachinery Noise" notes, page 10.'''
-# #     return jv(m, mu * r) - (Jm_(m, mu * Ri) / Ym_(m, mu * Ri)) * yv(m, mu * r)
+def eigenfunction(m, mu, r, Ri):
+    '''Equation taken from "Turbomachinery Noise" notes, page 10.'''
+    return jv(m, mu * r) - (Jm_(m, mu * Ri) / Ym_(m, mu * Ri)) * yv(m, mu * r)
 
-# r = np.linspace(Ri, Ro, 1000)
-# for m, mu in eigenvalues:
-#     plt.plot(r, eigenfunction(r, m, Ri, Ro))
-#     # plt.plot(r, eigenfunction(m, mu, r, Ri))
-#     plt.ylim(-1, 1)
-# plt.legend(eigenvalues[:, 0].astype(int))
-# plt.xlim(Ri, Ro)
+f, ax = plt.subplots(nrows=5, sharex=True, sharey=True, squeeze=True)
+r = np.linspace(Ri, Ro, 1000)
+for n, group in eigenvalues.groupby('n'):
+    for _, g in group.iterrows():
+        ax[n].plot(r, eigenfunction(g.m, g.mu, r, Ri), color=sns.color_palette()[n])
+        # ax[n].legend([n], loc='upper left')
+        ax[n].set_ylabel("n={}".format(n))
+        ax[n].plot([Ri, Ro], [0, 0], '--', alpha=0.5, color='k')
+
+plt.xlim(Ri, Ro)
+plt.ylim(-.5, .5)
+plt.xlabel('r')
 # plt.show()
-
+plt.savefig('tex/figs/problem2.pdf')
 
 # ###############################################################################
 # # Problem 3 ############################################################

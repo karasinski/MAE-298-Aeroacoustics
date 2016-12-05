@@ -36,8 +36,32 @@ You are designing a new aircraft engine and analyzing acoustic propagation gener
 \problem{[20 points]}
 Determine the first five eigenvalues of acoustics for m=18, 17, 16, 15 or (k=1, 2, 3, 4) or (m,n) = (18,0), (18,1), (18,2), (18,3), (18,4), (17,0), (17,1), (17,2), (17,3), (17,4), (16,0), (16,1), (16,2), (16,3), (16,4), (15,0), (15,1), (15,2), (15,3), (15,4)
 
+\begin{figure*}[h]
+  \centering
+\begin{tabular}{l | rrrr}
+\toprule
+  &         &         &         &       m \\
+n &      15 &      16 &      17 &      18 \\
+\midrule
+0 &  1.3093 &  1.3895 &  1.4696 &  1.5495 \\
+1 &  1.7032 &  1.7896 &  1.8755 &  1.9612 \\
+2 &  2.0137 &  2.1036 &  2.1932 &  2.2823 \\
+3 &  2.3005 &  2.3932 &  2.4855 &  2.5772 \\
+4 &  2.5753 &  2.6702 &  2.7646 &  2.8585 \\
+\bottomrule
+\end{tabular}
+\end{figure*}
+
+\clearpage
 \problem{[20 points]}
 Plot the five eigenfunctions (radial modes, n=0, 1, 2, 3, 4) for m=18, 17, 16, 15 or (k=1, 2, 3, 4) and verify n describes the number of zero crossings in the radial direction
+
+\begin{figure*}[h]
+  \centering
+  \includegraphics[width=\textwidth]{figs/problem2.pdf}%
+  % \caption{The standard narrowband sound pressure level with the reference pressure of 20 micro-Pascal.}%
+  % \label{fig:fullfig}%
+\end{figure*}
 
 \problem{[20 points]}
 Determine the wavenumbers in the z direction for (m,n)=(18,0), (18,1), (18,2), (17,0), (17,1), (17,2), (16,0), (16,1), (16,2), (15,0), (15,1), (15,2). Indicate whether the mode is cut-on (propagating) or cut-off (exponentially decaying). Consider only the propagation in the -z direction. Exclude the exponentially growing solution and include only the propagating solutions or exponentially decaying solutions.
