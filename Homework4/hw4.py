@@ -7,20 +7,10 @@ import seaborn as sns
 sns.set(style="ticks", palette="muted", color_codes=True)
 
 
-# B = 18
-# V = 1
-# m = n * B - k * V
-
-# M = 0.525
-# RPM = 8326.3042
-# c = 13503.937009  # in/s
-# rho = 1.4988E-5  # slug/in^3
-
-# dom_noise = RPM * (2 * np.pi / 60) * B
-
 ###############################################################################
 # Problem 1 ###################################################################
 ###############################################################################
+
 
 def Jm_(m, val):
     return 0.5 * (jv(m - 1, val) - jv(m + 1, val))
@@ -48,7 +38,7 @@ for m in np.arange(15, 19):
 eigenvalues = pd.DataFrame(eigenvalues)
 eigenvalues.columns = ['m', 'mu']
 
-eigenvalues.mu = eigenvalues.mu.astype(float).round(4)
+eigenvalues.mu = eigenvalues.mu.astype(float).round(8)
 eigenvalues.drop_duplicates(inplace=True)
 eigenvalues.sort(['m', 'mu'], inplace=True)
 
@@ -68,21 +58,26 @@ def eigenfunction(m, mu, r, Ri):
 f, ax = plt.subplots(nrows=5, sharex=True, sharey=True, squeeze=True)
 r = np.linspace(Ri, Ro, 1000)
 for n, group in eigenvalues.groupby('n'):
-    for _, g in group.iterrows():
-        ax[n].plot(r, eigenfunction(g.m, g.mu, r, Ri), color=sns.color_palette()[n])
-        # ax[n].legend([n], loc='upper left')
+    for i, g in group.reset_index(drop=True).iterrows():
+        ax[n].plot(r, eigenfunction(g.m, g.mu, r, Ri),
+                   color=sns.color_palette()[i], alpha=0.75)
         ax[n].set_ylabel("n={}".format(n))
-        ax[n].plot([Ri, Ro], [0, 0], '--', alpha=0.5, color='k')
 
+for ax_ in ax:
+    ax_.plot([Ri, Ro], [0, 0], '--', alpha=0.25, color='k')
+
+legend = ax[0].legend([15, 16, 17, 18], title='m', loc='center left', shadow=True, bbox_to_anchor=(1, 0))
+legend.get_frame().set_facecolor('#333333')
 plt.xlim(Ri, Ro)
 plt.ylim(-.5, .5)
-plt.xlabel('r')
-# plt.show()
+plt.xlabel('Radius [in]')
 plt.savefig('tex/figs/problem2.pdf')
+plt.close()
 
 ###############################################################################
 # Problem 3 ###################################################################
 ###############################################################################
+
 
 M = 0.525
 RPM = 8326.3042  # rotations per minute
@@ -103,6 +98,31 @@ res = pd.DataFrame(res, columns=['m', 'n', 'mu', 'Kz', 'Kzr', 'Kzi'])
 # Problem 4 ###################################################################
 ###############################################################################
 
+
+rho = 1.4988E-5  # slug/in^3
 p = pd.DataFrame.from_csv('pressure_input.dat', sep='\t', header=None, index_col=None)
+p.columns = ['r', 'Pr', 'Pi']
+p['P'] = p.Pr + p.Pi * 1j
+
+PWLs = []
+m = 18
+for _, (n, mu, Kz) in res.query('m == @m and n < 3')[['n', 'mu', 'Kz']].iterrows():
+    mu = float(mu)
+    gamma = (+ 0.5 * (Ro ** 2 - m ** 2 / mu ** 2) * eigenfunction(m, mu, Ro, Ri)**2
+             - 0.5 * (Ri ** 2 - m ** 2 / mu ** 2) * eigenfunction(m, mu, Ri, Ri)**2)
+
+    p['psi'] = eigenfunction(m, mu, p.r, Ri)
+    A = (1 / gamma) * np.trapz(y=p.P * p.psi * p.r, x=p.r)
+    W1 = (np.pi / (rho * c)) * gamma * A * np.conjugate(A)
+    W2 = ((1 + M ** 2) * np.real(Kz / (w / c - Kz * M))
+          + M * (1 + abs(Kz / (w / c - Kz * M))**2))
+    Wmn = W1 * W2
+    PWL = 10 * np.log10(abs(Wmn)) - 10 * np.log10(7.3756E-13)
+    # print(int(n), PWL)
+    PWLs.append([int(n), PWL, Wmn, Kz, mu, gamma, A])
+PWLs = pd.DataFrame(PWLs)
+PWLs.columns = ['n', 'PWL', 'Wmn', 'Kz', 'mu', 'gamma', 'A']
+print(PWLs[['n', 'PWL']])
+
 
 

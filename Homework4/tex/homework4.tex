@@ -15,7 +15,7 @@
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
-\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12} % for normal
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
 
 % Custom colors
 \usepackage{color}
@@ -24,6 +24,38 @@
 \usepackage{caption}
 \usepackage{bm}
 \captionsetup[lstlisting]{font={small,tt}}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily\footnotesize, % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  % breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  columns=flexible,
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,                       % sets default tabsize to 2 spaces
+}
 
 \author{John Karasinski}
 \title{EAE 298 Aeroacoustics \\ Fall Quarter 2016 \\ Homework \#4}
@@ -69,30 +101,33 @@ Determine the wavenumbers in the z direction for (m,n)=(18,0), (18,1), (18,2), (
 
 \begin{figure*}[h]
 \centering
-\begin{tabular}{lr | rr | r r}
+\begin{tabular}{lr|rr|r}
 \toprule
-     m &    n &      $\mu$ &       $K_z$          &  Propagation & Cut\\
+ m &  n &   $\mu$ &             $K_z$ &    Cut \\
 \midrule
-15 &  0 &  1.3093 & -0.386542 +  0.000000 i &       False  & On  \\
-15 &  1 &  1.7032 & -0.842343 +  1.195985 i &       False  & Off \\
-15 &  2 &  2.0137 & -0.842343 +  1.738854 i &       False  & Off \\
-15 &  3 &  2.3005 & -0.842343 +  2.175252 i &        True  & Off \\
-15 &  4 &  2.5753 & -0.842343 +  2.565427 i &        True  & Off \\
-16 &  0 &  1.3895 & -0.842343 +  0.301740 i &       False  & Off \\
-16 &  1 &  1.7896 & -0.842343 +  1.359038 i &       False  & Off \\
-16 &  2 &  2.1036 & -0.842343 +  1.880053 i &       False  & Off \\
-16 &  3 &  2.3932 & -0.842343 +  2.309196 i &        True  & Off \\
-16 &  4 &  2.6702 & -0.842343 +  2.696039 i &        True  & Off \\
-17 &  0 &  1.4696 & -0.842343 +  0.638123 i &       False  & Off \\
-17 &  1 &  1.8755 & -0.842343 +  1.510500 i &       False  & Off \\
-17 &  2 &  2.1932 & -0.842343 +  2.016453 i &       False  & Off \\
-17 &  3 &  2.4855 & -0.842343 +  2.440089 i &        True  & Off \\
-17 &  4 &  2.7646 & -0.842343 +  2.824338 i &        True  & Off \\
-18 &  0 &  1.5495 & -0.842343 +  0.860357 i &       False  & Off \\
-18 &  1 &  1.9612 & -0.842343 +  1.653943 i &       False  & Off \\
-18 &  2 &  2.2823 & -0.842343 +  2.148623 i &        True  & Off \\
-18 &  3 &  2.5772 & -0.842343 +  2.568059 i &        True  & Off \\
-18 &  4 &  2.8585 & -0.842343 +  2.950559 i &        True  & Off \\
+15 &  0 &  1.3093 & -0.386 +  0.000 i &    On  \\
+15 &  1 &  1.7032 & -0.842 +  1.195 i &    Off \\
+15 &  2 &  2.0137 & -0.842 +  1.738 i &    Off \\
+15 &  3 &  2.3005 & -0.842 +  2.175 i &    Off \\
+15 &  4 &  2.5753 & -0.842 +  2.565 i &    Off \\
+\midrule
+16 &  0 &  1.3895 & -0.842 +  0.301 i &    Off \\
+16 &  1 &  1.7896 & -0.842 +  1.359 i &    Off \\
+16 &  2 &  2.1036 & -0.842 +  1.880 i &    Off \\
+16 &  3 &  2.3932 & -0.842 +  2.309 i &    Off \\
+16 &  4 &  2.6702 & -0.842 +  2.696 i &    Off \\
+\midrule
+17 &  0 &  1.4696 & -0.842 +  0.638 i &    Off \\
+17 &  1 &  1.8755 & -0.842 +  1.510 i &    Off \\
+17 &  2 &  2.1932 & -0.842 +  2.016 i &    Off \\
+17 &  3 &  2.4855 & -0.842 +  2.440 i &    Off \\
+17 &  4 &  2.7646 & -0.842 +  2.824 i &    Off \\
+\midrule
+18 &  0 &  1.5495 & -0.842 +  0.860 i &    Off \\
+18 &  1 &  1.9612 & -0.842 +  1.653 i &    Off \\
+18 &  2 &  2.2823 & -0.842 +  2.148 i &    Off \\
+18 &  3 &  2.5772 & -0.842 +  2.568 i &    Off \\
+18 &  4 &  2.8585 & -0.842 +  2.950 i &    Off \\
 \bottomrule
 \end{tabular}
 \end{figure*}
@@ -100,5 +135,21 @@ Determine the wavenumbers in the z direction for (m,n)=(18,0), (18,1), (18,2), (
 \clearpage
 \problem{[30 points]}
 The pressure distribution file at z=0 plane for m=18 or 1 BPF is provided. The first column is the dimensional radius [in], the second column the real part of the pressure [psi], and the third column is the imaginary part of the pressure [psi]. Using this boundary condition, compute the sound power level for (m,n)=(18,0), (18,1), (18,2). This noise is considered for blade self noise that is not associated with the gust response since k=0. Note that the z=0 plane is not the same as the engine inlet. Use the conversion for the unit for the sound power as follows: PWL (dB)=10*log10((Wmn))-10*log10(7.3756E-13)
+
+\begin{figure*}[h]
+\centering
+\begin{tabular}{rr}
+\toprule
+n &         PWL \\
+\midrule
+  0 &  -10.4015 \\
+  1 &  -13.3775 \\
+  2 &  -22.3880 \\
+\bottomrule
+\end{tabular}
+\end{figure*}
+
+\clearpage
+\lstinputlisting{../hw4.py}
 
 \end{document}
