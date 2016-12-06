@@ -11,19 +11,14 @@ sns.set(style="ticks", palette="muted", color_codes=True)
 # Problem 1 ###################################################################
 ###############################################################################
 
-
 def Jm_(m, val):
     return 0.5 * (jv(m - 1, val) - jv(m + 1, val))
-
 
 def Ym_(m, val):
     return 0.5 * (yv(m - 1, val) - yv(m + 1, val))
 
-
 def func(mu, m, Ri, Ro):
-    '''Equation taken from "Turbomachinery Noise" notes, page 10.'''
     return Jm_(m, mu * Ro) * Ym_(m, mu * Ri) - Jm_(m, mu * Ri) * Ym_(m, mu * Ro)
-
 
 Ri, Ro = 3, 13  # inches
 
@@ -35,6 +30,7 @@ for m in np.arange(15, 19):
             eigenvalues.append([m, mu])
         except Exception:
             pass
+
 eigenvalues = pd.DataFrame(eigenvalues)
 eigenvalues.columns = ['m', 'mu']
 
@@ -50,9 +46,7 @@ print(eigenvalues.pivot('n', 'm'))
 # Problem 2 ###################################################################
 ###############################################################################
 
-
 def eigenfunction(m, mu, r, Ri):
-    '''Equation taken from "Turbomachinery Noise" notes, page 10.'''
     return jv(m, mu * r) - (Jm_(m, mu * Ri) / Ym_(m, mu * Ri)) * yv(m, mu * r)
 
 f, ax = plt.subplots(nrows=5, sharex=True, sharey=True, squeeze=True)
@@ -66,8 +60,10 @@ for n, group in eigenvalues.groupby('n'):
 for ax_ in ax:
     ax_.plot([Ri, Ro], [0, 0], '--', alpha=0.25, color='k')
 
-legend = ax[0].legend([15, 16, 17, 18], title='m', loc='center left', shadow=True, bbox_to_anchor=(1, 0))
+legend = ax[0].legend([15, 16, 17, 18], title='m',
+                      loc='center left', shadow=True, bbox_to_anchor=(1, 0))
 legend.get_frame().set_facecolor('#333333')
+
 plt.xlim(Ri, Ro)
 plt.ylim(-.5, .5)
 plt.xlabel('Radius [in]')
@@ -77,7 +73,6 @@ plt.close()
 ###############################################################################
 # Problem 3 ###################################################################
 ###############################################################################
-
 
 M = 0.525
 RPM = 8326.3042  # rotations per minute
@@ -93,11 +88,11 @@ for i, (m, mu, n) in eigenvalues.iterrows():
     Kzi = float(np.imag(Kz))
     res.append([m, n, mu, Kz, Kzr, Kzi])
 res = pd.DataFrame(res, columns=['m', 'n', 'mu', 'Kz', 'Kzr', 'Kzi'])
+print(res)
 
 ###############################################################################
 # Problem 4 ###################################################################
 ###############################################################################
-
 
 rho = 1.4988E-5  # slug/in^3
 p = pd.DataFrame.from_csv('pressure_input.dat', sep='\t', header=None, index_col=None)
@@ -123,6 +118,3 @@ for _, (n, mu, Kz) in res.query('m == @m and n < 3')[['n', 'mu', 'Kz']].iterrows
 PWLs = pd.DataFrame(PWLs)
 PWLs.columns = ['n', 'PWL', 'Wmn', 'Kz', 'mu', 'gamma', 'A']
 print(PWLs[['n', 'PWL']])
-
-
-
